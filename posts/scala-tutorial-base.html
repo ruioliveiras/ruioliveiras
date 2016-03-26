@@ -253,71 +253,51 @@ val p = new Dog(&quot;doggy&quot;) with Person {
     val name = dogName;
 }
 testTraitPerson(p)
-~~~
-
-&lt;a name=&quot;case-class&quot;&gt;&lt;/a&gt;
-## Case Class
-
-Case class are a &quot;modification&quot; to normal classes
-~
-</code></pre><p>// normal class
+</code></pre><p><a name="case-class"></a></p>
+<h2>Case Class</h2><p>Case class are a &quot;modification&quot; to normal classes</p>
+<pre><code>// normal class
 class Onwer( name:String)
 class Phone( number:String,  owner:Onwer)
 // case class
 case class Owner2( name:String)
-case class Phone2( number:String, owner:Owner2)</p>
-<pre><code class="language-~">
-Creating a case class you will be access:
-  * default create functions: toString, copy, equal and hashcode.
-  * class will be immutable by default
-  * default create singleton object with method unapplay and apply functions
+case class Phone2( number:String, owner:Owner2)
+</code></pre><p>Creating a case class you will be access:</p>
+<ul>
+<li>default create functions: toString, copy, equal and hashcode.</li>
+<li>class will be immutable by default</li>
+<li>default create singleton object with method unapplay and apply functions</li>
+</ul>
+<p>!explain !
+!Here explain the power of unapplay and apply!</p>
+<p><a name="generic-class"></a></p>
+<h2>Generic Class</h2><h2>Inner Class and Object</h2><p><a name="scala-functional"></a></p>
+<h1>Scala as a Functional language</h1><p>On this section, there will be explained some of the Scala features that are related to Functional World:</p>
+<ul>
+<li>var and val (Mutability and Immutability)</li>
+<li>Lambda functions</li>
+<li>handling collection in a functional way</li>
+<li>implicit things (variable, method and class) </li>
+</ul>
+<p><a name="var-val"></a></p>
+<h2>Var and Val</h2><p>Var and Val keyword can be used to declare objects or in class parameter.</p>
+<p><strong>var</strong> stands for variable
+<strong>val</strong> stands for value</p>
+<pre><code>var counter = 1;
+val max = 100;
 
-
-!explain !
-!Here explain the power of unapplay and apply!
-
-&lt;a name=&quot;generic-class&quot;&gt;&lt;/a&gt;
-## Generic Class
-
-
-## Inner Class and Object 
-
-&lt;a name=&quot;scala-functional&quot;&gt;&lt;/a&gt;
-# Scala as a Functional language
-
-On this section, there will be explained some of the Scala features that are related to Functional World:
-  * var and val (Mutability and Immutability)
-  * Lambda functions
-  * handling collection in a functional way
-  * implicit things (variable, method and class) 
-
-&lt;a name=&quot;var-val&quot;&gt;&lt;/a&gt;
-## Var and Val
-Var and Val keyword can be used to declare objects or in class parameter.
-
-**var** stands for variable
-**val** stands for value
-</code></pre>
-<p>var counter = 1;
-val max = 100;</p>
-<p>while(counter &lt; max) {
+while(counter &lt; max) {
   counter += 1;
   // in scala there aren&#39;t ++ operator
-}</p>
-<pre><code>
-On this example counter variable are being setted multiple times. While if you try to set a new value in the counter, it will gives you a compile error.
-
-Usage on as a class parameter:
-</code></pre><p>class Person(val name:String, var age:Int) {
+}
+</code></pre><p>On this example counter variable are being setted multiple times. While if you try to set a new value in the counter, it will gives you a compile error.</p>
+<p>Usage on as a class parameter:</p>
+<pre><code>class Person(val name:String, var age:Int) {
   def doBirthdate:Unit = age += 1;
-}</p>
-<pre><code>
-The parameter name will never got changed while age can be changed.
-
-Var and Val with class types
-</code></pre><p>class Club(val peopleList:List[Person], val owner:Person)
-~~~~</p>
-<p>On this example we have the owner parameter as val, but this don&#39;t mean that we cannot use &#39;onwer.doBirthdate&#39;.
+}
+</code></pre><p>The parameter name will never got changed while age can be changed.</p>
+<p>Var and Val with class types</p>
+<pre><code>class Club(val peopleList:List[Person], val owner:Person)
+</code></pre><p>On this example we have the owner parameter as val, but this don&#39;t mean that we cannot use &#39;onwer.doBirthdate&#39;.
 When we set a parameter has val, we are telling the compiler that the &#39;symbol&#39; named &#39;owner&#39; will only be setted one time.</p>
 <p>We say that a class is Immutable when all the parameters are &#39;val&#39; and all the parameters Types are also immutable.</p>
 <p><a name="higter-order"></a></p>
