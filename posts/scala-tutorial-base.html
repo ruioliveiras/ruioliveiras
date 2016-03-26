@@ -1,0 +1,219 @@
+<h1>Scala Language base Tutorial</h1><h2>Hot links</h2><p>Scala Oficial
+Laboratory 1
+<a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
+<h2>Me and Scala</h2><p>I&#39;m recent scala developer, started programing in scala in november of 2015. </p>
+<p>Scala has the goods of of all paradigms Objects, Functional, Scripting.</p>
+<h2>Summary</h2><ol>
+<li><a href="#concepts">Concepts</a><ul>
+<li><a href="#mutability-ummitability">Mutability and Immutability</a></li>
+<li><a href="#singleton">Singleton object</a></li>
+</ul>
+</li>
+<li><a href="#scala-oo">Scala as a Object Oriented Language</a><ul>
+<li><a href="#objects-class">Objects and Class</a></li>
+<li><a href="#traits">Traits</a></li>
+<li><a href="#case-class">Case Class</a></li>
+<li><a href="#generic-class">Trait and Extension</a></li>
+<li><a href="#generic-class">Generic Class</a></li>
+</ul>
+</li>
+<li><a href="#scala-functional">Scala as a Functional language</a><ul>
+<li><a href="#var-val">Var and Val</a></li>
+<li><a href="#higter-order">Higter order functions</a></li>
+<li><a href="#collections-functions">Collections functions</a></li>
+<li><a href="#-implicit-variable">Implicit Variable</a></li>
+<li><a href="#-implicit-method">Implicit Method</a></li>
+<li><a href="#-implicit-class">Implicit Class</a></li>
+</ul>
+</li>
+<li><a href="#scala-script">Scala as a Script language</a><ul>
+<li><a href="#type-inference">Type Inference</a></li>
+<li><a href="#syntax-sugar">Syntax Sugar</a> - map({}) don&#39;t, need return code block {} etc</li>
+<li>[]</li>
+</ul>
+</li>
+<li><a href="#scala-cool">Scala as a cool language</a><ul>
+<li><a href="#scala-concurrency">Scala Concurrency</a><ul>
+<li><a href="#futures-promises">Futures and Promises</a></li>
+<li><a href="#todo">@todo: add topics here</a></li>
+</ul>
+</li>
+<li><a href="#scala-reflection">Scala Reflection</a><ul>
+<li><a href="#universe">Universe</a></li>
+<li><a href="#todo2">Add something here</a></li>
+</ul>
+</li>
+<li><a href="#scala-macros">Scala Macros</a><ul>
+<li><a href="#whitebox-blackbox">Whitebox and blackbox macros</a></li>
+<li><a href="#annotations-macros">Annotations Macros</a></li>
+</ul>
+</li>
+<li><a href="#scala-xml">Scala XML</a></li>
+<li><a href="#scala-string">Scala String Processing</a></li>
+</ul>
+</li>
+</ol>
+<p><a name="concepts"></a></p>
+<h1>Concepts</h1><p>Before we get started, we must know about a few general concepts. 
+Concepts that are not specific from the Scala language but general from the programming.
+But where in Scala they are more used or has more importance.</p>
+<p><a name="mutability-ummitability"></a></p>
+<h2>Mutability and Immutability</h2><p>Immutability is one of pillars of a functional language.</p>
+<p><strong> Mutable variable </strong> its state can change with the time.</p>
+<p><strong> Immutable variable </strong> its state can&#39;t change with the time.</p>
+<p>Immutability advantages</p>
+<ul>
+<li>Is very good for concurrency (many threads changing the value of one variable at same time may be dangerous )</li>
+<li>Turn your code more clean</li>
+</ul>
+<p>Immutability disadvantages</p>
+<ul>
+<li>May be  costly to be recreating objects on each change</li>
+</ul>
+<p><a name="singleton"></a></p>
+<h2>Singleton object</h2><p><a name="scala-oo"></a></p>
+<h1>Scala as a Object Oriented Language</h1><p>In Scala we can do everything that we can do in JAVA.</p>
+<p><a name="objects-class"></a></p>
+<h2>Objects and Class</h2><p><strong>Class</strong>: is equivalent to Java. </p>
+<pre><code>// declaring
+class Example(favoriteNumber:Int, name:String) {
+    private val dadFavoriteNumber:Int = favoriteNumber * 2
+    def dadNumber():Int = dadFavoriteNumber
+}
+// instantiating
+new Example(1, &quot;ruiOliveira&quot;).dadNumber()
+</code></pre><p><strong>Object</strong>: is a tool that can be used in different situations.
+One of the used situations is to work has a singleton
+(in the nested class and object you will see that not all objects are singleton)</p>
+<pre><code>class Example(favoriteNumber:Int, name:String) { ... }
+
+// declaring object
+object Example{
+    var counter:Int = 10
+    def counterPlusOne():Int ={ counter += 1; counter }  
+    def newExample(name:String) = new Example(counterPlusOne(), name);
+}
+Example.newExample(&quot;Rui Oliveira&quot;)
+</code></pre><p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
+<p><a name="traits"></a></p>
+<h2>Traits</h2><p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
+Note that traits are a conceptual thing resolver by the scala compiler in-lining methods, at the JVM is just a Interface</p>
+<p><strong>Trait example</strong></p>
+<p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
+<pre><code>trait Person{
+    val name:String;
+    var nameCounter = 0
+    def getName():String = {
+        nameCounter += 1
+        // value name is the last thing of this block so will be returned 
+        // Keep this in mind, scala don&#39;t require return keyword 
+        name
+    }
+
+    def howManyTimesNameWasCalled() = nameCounter
+}
+
+def testTraitPerson(p:Person):Int = p.howManyTimesNameWasCalled()
+</code></pre><p><strong>Object using a Trait</strong>, note that we are defining name value.</p>
+<pre><code>object RuiOliveira extends Person{
+    val name = &quot;rui Oliveira&quot;;
+}
+
+testTraitPerson(RuiOliveira)
+</code></pre><p>Has you can see a object is a variable that uses Person so it can be used in the testTraitPerson</p>
+<p><strong>Class using a trait</strong>, note that we are declaring value name in the parameters now.</p>
+<pre><code>class OtherPerson(val name:String) extends Person
+
+val p = new OtherPerson(&#39;pedro&#39;)
+testTraitPerson(p)
+</code></pre><p>Has was expected we can use traits in class&#39;s</p>
+<p>Using a trait on annoy</p>
+<pre><code>class Dog(val name:String)
+
+~~~
+
+/**
+  * Receiving a trait as parameter
+  */
+def receiveTrait(p:Person):Int = p.howManyTimesNameWasCalled()
+
+/** 
+ * calling with the object
+ */
+receiveTrait(RuiOliveira)
+
+/**
+  * calling with 
+  */
+test(new OtherPerson())
+~
+</code></pre><p><a name="case-class"></a></p>
+<h2>Case Class</h2><p><a name="generic-class"></a></p>
+<h2>Generic Class</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<h2>Inner Object</h2><p><a name="scala-functional"></a></p>
+<h1>Scala as a Functional language</h1><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="var-val"></a></p>
+<h2>Var and Val</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="higter-order"></a></p>
+<h2>Higter order functions</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="collections-functions"></a></p>
+<h2>Collections functions</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="-implicit-variable"></a></p>
+<h2>Implicit Variable</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="-implicit-method"></a></p>
+<h2>Implicit Method</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="-implicit-class"></a></p>
+<h2>Implicit Class</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-script"></a></p>
+<h1>Scala as a Script language</h1><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="type-inference"></a></p>
+<h2>Type Inference</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="syntax-sugar"></a></p>
+<h2>Syntax Sugar</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-cool"></a></p>
+<h1>Scala as a cool language</h1><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-concurrency"></a></p>
+<h2>Scala Concurrency</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="futures-promises"></a></p>
+<h3>Futures and Promises</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="todo"></a></p>
+<h3>@todo: add topics here</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-reflection"></a></p>
+<h2>Scala Reflection</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="universe"></a></p>
+<h3>Universe</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="todo2"></a></p>
+<h3>Add something here</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-macros"></a></p>
+<h2>Scala Macros</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="whitebox-blackbox"></a></p>
+<h3>Whitebox and blackbox macros</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="annotations-macros"></a></p>
+<h3>Annotations Macros</h3><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-xml"></a></p>
+<h2>Scala XML</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<p><a name="scala-string"></a></p>
+<h2>Scala String Processing</h2><p>WARNING: Not writed yet
+TODO: write this topic.</p>
