@@ -1,4 +1,119 @@
-<h1>Scala Language base Tutorial</h1><h2>Hot links</h2><p>Scala Oficial
+<!DOCTYPE html><html><head><style>body { 
+width:100% !important;
+margin:0 !important;
+padding:0 !important;
+line-height: 1.4;
+word-spacing:1.1pt;
+letter-spacing:0.2pt; font-family: "Times New Roman", serif; color: #000; background: none; font-size: 12pt; }
+
+/*Headings */
+h1,h2,h3,h4,h5,h6 { font-family: Helvetica, Arial, sans-serif; }
+h1{font-size:19pt;}
+h2{font-size:17pt;}
+h3{font-size:15pt;}
+h4,h5,h6{font-size:12pt;}
+
+pre, code { font: 10pt Courier, monospace; } 
+blockquote { margin: 1.3em; padding: 1em;  font-size: 10pt; }
+hr { background-color: #ccc; }
+
+/* Images */
+img { float: left; margin: 1em 1.5em 1.5em 0; }
+a img { border: none; }
+
+/* Links */
+a:link, a:visited { background: transparent; font-weight: normal; text-decoration: underline; color:#333; }
+a:link[href^="http://"]:after, a[href^="http://"]:visited:after { content: " (" attr(href) ")"; font-size: 90%; }
+a[href^="http://"] {color:#000; }
+
+/* Table */
+table { margin: 1px; text-align:left; }
+th { font-weight: bold; }
+th,td { padding: 4px 10px 4px 0; }
+tfoot { font-style: italic; }
+caption { background: #fff; margin-bottom:2em; text-align:left; }
+thead {display: table-header-group;}
+tr {page-break-inside: avoid;} 
+
+/*hide various parts from the site*/
+
+html { color: black; padding: 20px 10px 10px 10px; }
+
+body { font-size: 14pt; line-height: 1.4em; font-family: Georgia, serif; }
+
+header        { }
+header span   { font-family: Arial, Verdana, sans-serif; }
+header .big   { font-size: 36pt; border: none; }
+header .small { font-size: 22pt; color: gray; }
+
+ul ul { margin-bottom: 0.5em }
+
+div#TOC { font-size: 10pt; margin: 2em 0 1em 0; padding: 0; background-color: white; }
+div#TOC ul > ul { margin-left: 1em; }
+
+dd { margin-left: 2em; }
+
+hr { height: 1px; color: #aaa; background-color: #aaa; border: 0; margin: .2em 0 .2em 0; }
+
+h1.title { font-size: 24pt; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; border-bottom: 1px solid black; }
+h1 { font-size: 20pt; }
+h2 { font-size: 18pt; }
+h3 { font-size: 16pt; }
+h4 h5 h6  { font-size: 14pt; }
+
+ul { list-style-type: square; }
+dt { font-weight: bold; margin-bottom: .1em; }
+
+table { border-top: 1px solid #ccc;  border-left: 1px solid #ccc; }
+th, td { border-bottom: 1px solid #ddd; border-right: 1px solid #ccc; }
+
+blockquote { padding: 0 1.6em; color: #666; }
+
+main { max-width: 46em; }
+
+footer { padding: 1em; color: #888; text-align: center; font-size: 12pt; }
+
+nav { font-family: Arial, Verdana, sans-serif; font-size: 12pt; font-weight: bold; }
+nav { margin-top: 2em; }
+nav ul { margin-top: 0; margin-bottom: 0; }
+nav ul li { list-style: none; padding: 0; }
+nav ul li > ul { margin-left: 1em; }
+nav ul li a { text-decoration: none; }
+nav label { }
+
+.navbar-default { background-color: transparent; border: none; }
+
+/* Tree menus */
+.nav-header:after {
+content: "\00A0\25BE";
+}
+
+div#toc { border-top: 1px solid gray; margin-top: 1em; padding-top: 1em; }
+div#flattr { float: right; font-size: 12pt; font-family: sans-serif; }
+div#paypal { float: right; font-size: 12pt; font-family: sans-serif; }
+div#bitcoin { float: right; font-size: 12pt; font-family: sans-serif; }
+
+/* Loosely based on pygment's default colors */
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre 
+   { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } 
+td.sourceCode { padding-left: 5px; }
+pre.sourceCode { }
+pre.sourceCode span.kw { color: #007020; font-weight: bold; } 
+pre.sourceCode span.dt { color: #902000; }
+pre.sourceCode span.dv { color: #40a070; }
+pre.sourceCode span.bn { color: #40a070; }
+pre.sourceCode span.fl { color: #40a070; }
+pre.sourceCode span.ch { color: #4070a0; }
+pre.sourceCode span.st { color: #4070a0; }
+pre.sourceCode span.co { color: #60a0b0; font-style: italic; }
+pre.sourceCode span.ot { color: #007020; }
+pre.sourceCode span.al { color: red; font-weight: bold; }
+pre.sourceCode span.fu { color: #06287e; }
+pre.sourceCode span.re { }
+pre.sourceCode span.er { color: red; font-weight: bold; }
+</style></head><body><h1><a href="/">Rui Oliveiras</a></h1><h1>Scala Language base Tutorial</h1><h2>Hot links</h2><p>Scala Oficial
 Laboratory 1
 <a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
 <h2>Me and Scala</h2><p>I&#39;m recent scala developer, started programing in scala in november of 2015. </p>
@@ -71,7 +186,11 @@ But where in Scala they are more used or has more importance.</p>
 <li>May be  costly to be recreating objects on each change</li>
 </ul>
 <p><a name="singleton"></a></p>
-<h2>Singleton object</h2><p><a name="scala-oo"></a></p>
+<h2>Singleton object</h2><p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.
+In Java there are the static keyword that puts the method or the variable into the singleton object of the class.
+But in Scala there the classes don&#39;t have a singleton object.
+Instead there are classes and singleton objects, they are managed differently.</p>
+<p><a name="scala-oo"></a></p>
 <h1>Scala as a Object Oriented Language</h1><p>In Scala we can do everything that we can do in JAVA.</p>
 <p><a name="objects-class"></a></p>
 <h2>Objects and Class</h2><p><strong>Class</strong>: is equivalent to Java. </p>
@@ -127,38 +246,82 @@ testTraitPerson(RuiOliveira)
 val p = new OtherPerson(&#39;pedro&#39;)
 testTraitPerson(p)
 </code></pre><p>Has was expected we can use traits in class&#39;s</p>
-<p>Using a trait on annoy</p>
-<pre><code>class Dog(val name:String)
+<p><strong>Trait on variable</strong>. The class Dog don&#39;t use the trait Person, but even so we can create a variable with that implementing what is need. </p>
+<pre><code>class Dog(val dogName:String)
 
+val p = new Dog(&quot;doggy&quot;) with Person {
+    val name = dogName;
+}
+testTraitPerson(p)
 ~~~
 
-/**
-  * Receiving a trait as parameter
-  */
-def receiveTrait(p:Person):Int = p.howManyTimesNameWasCalled()
+&lt;a name=&quot;case-class&quot;&gt;&lt;/a&gt;
+## Case Class
 
-/** 
- * calling with the object
- */
-receiveTrait(RuiOliveira)
-
-/**
-  * calling with 
-  */
-test(new OtherPerson())
+Case class are a &quot;modification&quot; to normal classes
 ~
-</code></pre><p><a name="case-class"></a></p>
-<h2>Case Class</h2><p><a name="generic-class"></a></p>
-<h2>Generic Class</h2><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<h2>Inner Object</h2><p><a name="scala-functional"></a></p>
-<h1>Scala as a Functional language</h1><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="var-val"></a></p>
-<h2>Var and Val</h2><p>WARNING: Not writed yet
-TODO: write this topic.</p>
+</code></pre><p>// normal class
+class Onwer( name:String)
+class Phone( number:String,  owner:Onwer)
+// case class
+case class Owner2( name:String)
+case class Phone2( number:String, owner:Owner2)</p>
+<pre><code class="language-~">
+Creating a case class you will be access:
+  * default create functions: toString, copy, equal and hashcode.
+  * class will be immutable by default
+  * default create singleton object with method unapplay and apply functions
+
+
+!explain !
+!Here explain the power of unapplay and apply!
+
+&lt;a name=&quot;generic-class&quot;&gt;&lt;/a&gt;
+## Generic Class
+
+
+## Inner Class and Object 
+
+&lt;a name=&quot;scala-functional&quot;&gt;&lt;/a&gt;
+# Scala as a Functional language
+
+On this section, there will be explained some of the Scala features that are related to Functional World:
+  * var and val (Mutability and Immutability)
+  * Lambda functions
+  * handling collection in a functional way
+  * implicit things (variable, method and class) 
+
+&lt;a name=&quot;var-val&quot;&gt;&lt;/a&gt;
+## Var and Val
+Var and Val keyword can be used to declare objects or in class parameter.
+
+**var** stands for variable
+**val** stands for value
+</code></pre>
+<p>var counter = 1;
+val max = 100;</p>
+<p>while(counter &lt; max) {
+  counter += 1;
+  // in scala there aren&#39;t ++ operator
+}</p>
+<pre><code>
+On this example counter variable are being setted multiple times. While if you try to set a new value in the counter, it will gives you a compile error.
+
+Usage on as a class parameter:
+</code></pre><p>class Person(val name:String, var age:Int) {
+  def doBirthdate:Unit = age += 1;
+}</p>
+<pre><code>
+The parameter name will never got changed while age can be changed.
+
+Var and Val with class types
+</code></pre><p>class Club(val peopleList:List[Person], val owner:Person)
+~~~~</p>
+<p>On this example we have the owner parameter as val, but this don&#39;t mean that we cannot use &#39;onwer.doBirthdate&#39;.
+When we set a parameter has val, we are telling the compiler that the &#39;symbol&#39; named &#39;owner&#39; will only be setted one time.</p>
+<p>We say that a class is Immutable when all the parameters are &#39;val&#39; and all the parameters Types are also immutable.</p>
 <p><a name="higter-order"></a></p>
-<h2>Higter order functions</h2><p>WARNING: Not writed yet
+<h2>Lambda functions</h2><p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="collections-functions"></a></p>
 <h2>Collections functions</h2><p>WARNING: Not writed yet
@@ -216,4 +379,4 @@ TODO: write this topic.</p>
 TODO: write this topic.</p>
 <p><a name="scala-string"></a></p>
 <h2>Scala String Processing</h2><p>WARNING: Not writed yet
-TODO: write this topic.</p>
+TODO: write this topic.</p></body></html>
