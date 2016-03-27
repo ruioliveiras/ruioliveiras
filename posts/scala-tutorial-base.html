@@ -1,9 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/css/blog.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"></head><body><div id="layout" class="pure-g"><div class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="header"><h1 class="brand-title">Rui Oliveiras</h1><h2 class="brand-tagline">my personal blog</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/about">aboutMe</a></li><li class="nav-item"><a href="/posts">Posts</a></li><li class="nav-item">task1: modify layout for inheritance to be able to create to a content page create a sub-indice below this indice</li><li class="nav-item">task2: format css inside post list</li><li class="nav-item">task3: get a way for tag url seach work</li><li class="nav-item">task3.1: how intenal google search work? put this here</li><li class="nav-item">task4: format somehow the content inside pre > code</li></ul></nav></div></div><div class="ros-content pure-u-1 pure-u-md-3-4"><div><h1>Scala Language base Tutorial</h1><h4>Hot links</h4><p>Scala Oficial</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><link rel="stylesheet" href="/css/blog.css"></head><body><div id="layout" class="pure-g"><div class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="header"><h1 class="brand-title">Rui Oliveiras</h1><h2 class="brand-tagline">my personal blog</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/about">aboutMe</a></li><li class="nav-item"><a href="/posts">Posts</a></li><li class="nav-item">task1: modify layout for inheritance to be able to create to a content page create a sub-indice below this indice</li><li class="nav-item">task2: format css inside post list</li><li class="nav-item">task3: get a way for tag url seach work</li><li class="nav-item">task3.1: how intenal google search work? put this here</li><li class="nav-item">task4: format somehow the content inside pre > code</li></ul></nav></div></div><div class="ros-content pure-u-1 pure-u-md-3-4"><h1 id="scala-language-base-tutorial">Scala Language base Tutorial</h1>
+<h4 id="hot-links">Hot links</h4>
+<p>Scala Oficial</p>
 <p>Laboratory 1</p>
 <p><a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
-<h4>Me and Scala</h4><p>I&#39;m recent scala developer, started programing in scala in november of 2015. </p>
+<h4 id="me-and-scala">Me and Scala</h4>
+<p>I&#39;m recent scala developer, started programing in scala in november of 2015. </p>
 <p>Scala has the goods of of all paradigms Objects, Functional, Scripting.</p>
-<h2>Summary</h2><ol>
+<h2 id="summary">Summary</h2>
+<ol>
 <li><a href="#concepts">Concepts</a><ul>
 <li><a href="#mutability-ummitability">Mutability and Immutability</a></li>
 <li><a href="#singleton">Singleton object</a></li>
@@ -54,11 +58,13 @@
 </li>
 </ol>
 <p><a name="concepts"></a></p>
-<h2>Concepts</h2><p>Before we get started, we must know about a few general concepts. 
+<h2 id="concepts">Concepts</h2>
+<p>Before we get started, we must know about a few general concepts. 
 Concepts that are not specific from the Scala language but general from the programming.
 But where in Scala they are more used or has more importance.</p>
 <p><a name="mutability-ummitability"></a></p>
-<h3>Mutability and Immutability</h3><p>Immutability is one of pillars of a functional language.</p>
+<h3 id="mutability-and-immutability">Mutability and Immutability</h3>
+<p>Immutability is one of pillars of a functional language.</p>
 <p><strong> Mutable variable </strong> its state can change with the time.</p>
 <p><strong> Immutable variable </strong> its state can&#39;t change with the time.</p>
 <p>Immutability advantages</p>
@@ -71,14 +77,17 @@ But where in Scala they are more used or has more importance.</p>
 <li>May be  costly to be recreating objects on each change</li>
 </ul>
 <p><a name="singleton"></a></p>
-<h3>Singleton object</h3><p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.
+<h3 id="singleton-object">Singleton object</h3>
+<p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.
 In Java there are the static keyword that puts the method or the variable into the singleton object of the class.
 But in Scala there the classes don&#39;t have a singleton object.
 Instead there are classes and singleton objects, they are managed differently.</p>
 <p><a name="scala-oo"></a></p>
-<h2>Scala as a Object Oriented Language</h2><p>In Scala we can do everything that we can do in JAVA.</p>
+<h2 id="scala-as-a-object-oriented-language">Scala as a Object Oriented Language</h2>
+<p>In Scala we can do everything that we can do in JAVA.</p>
 <p><a name="objects-class"></a></p>
-<h3>Objects and Class</h3><p><strong>Class</strong>: is equivalent to Java. </p>
+<h3 id="objects-and-class">Objects and Class</h3>
+<p><strong>Class</strong>: is equivalent to Java. </p>
 <pre><code>// declaring
 class Example(favoriteNumber:Int, name:String) {
     private val dadFavoriteNumber:Int = favoriteNumber * 2
@@ -100,7 +109,8 @@ object Example{
 Example.newExample(&quot;Rui Oliveira&quot;)
 </code></pre><p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
 <p><a name="traits"></a></p>
-<h3>Traits</h3><p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
+<h3 id="traits">Traits</h3>
+<p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
 Note that traits are a conceptual thing resolver by the scala compiler in-lining methods, at the JVM is just a Interface</p>
 <p><strong>Trait example</strong></p>
 <p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
@@ -139,7 +149,8 @@ val p = new Dog(&quot;doggy&quot;) with Person {
 }
 testTraitPerson(p)
 </code></pre><p><a name="case-class"></a></p>
-<h3>Case Class</h3><p>Case class are a &quot;modification&quot; to normal classes</p>
+<h3 id="case-class">Case Class</h3>
+<p>Case class are a &quot;modification&quot; to normal classes</p>
 <pre><code>// normal class
 class Onwer( name:String)
 class Phone( number:String,  owner:Onwer)
@@ -155,8 +166,11 @@ case class Phone2( number:String, owner:Owner2)
 <p>!explain !
 !Here explain the power of unapplay and apply!</p>
 <p><a name="generic-class"></a></p>
-<h3>Generic Class</h3><h3>Inner Class and Object</h3><p><a name="scala-functional"></a></p>
-<h2>Scala as a Functional language</h2><p>On this section, there will be explained some of the Scala features that are related to Functional World:</p>
+<h3 id="generic-class">Generic Class</h3>
+<h3 id="inner-class-and-object">Inner Class and Object</h3>
+<p><a name="scala-functional"></a></p>
+<h2 id="scala-as-a-functional-language">Scala as a Functional language</h2>
+<p>On this section, there will be explained some of the Scala features that are related to Functional World:</p>
 <ul>
 <li>var and val (Mutability and Immutability)</li>
 <li>Lambda functions</li>
@@ -164,7 +178,8 @@ case class Phone2( number:String, owner:Owner2)
 <li>implicit things (variable, method and class) </li>
 </ul>
 <p><a name="var-val"></a></p>
-<h3>Var and Val</h3><p>Var and Val keyword can be used to declare objects or in class parameter.</p>
+<h3 id="var-and-val">Var and Val</h3>
+<p>Var and Val keyword can be used to declare objects or in class parameter.</p>
 <p><strong>var</strong> stands for variable
 <strong>val</strong> stands for value</p>
 <pre><code>var counter = 1;
@@ -186,62 +201,83 @@ while(counter &lt; max) {
 When we set a parameter has val, we are telling the compiler that the &#39;symbol&#39; named &#39;owner&#39; will only be setted one time.</p>
 <p>We say that a class is Immutable when all the parameters are &#39;val&#39; and all the parameters Types are also immutable.</p>
 <p><a name="higter-order"></a></p>
-<h3>Lambda functions</h3><p>WARNING: Not writed yet
+<h3 id="lambda-functions">Lambda functions</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="collections-functions"></a></p>
-<h3>Collections functions</h3><p>WARNING: Not writed yet
+<h3 id="collections-functions">Collections functions</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="-implicit-variable"></a></p>
-<h3>Implicit Variable</h3><p>WARNING: Not writed yet
+<h3 id="implicit-variable">Implicit Variable</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="-implicit-method"></a></p>
-<h3>Implicit Method</h3><p>WARNING: Not writed yet
+<h3 id="implicit-method">Implicit Method</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="-implicit-class"></a></p>
-<h3>Implicit Class</h3><p>WARNING: Not writed yet
+<h3 id="implicit-class">Implicit Class</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-script"></a></p>
-<h2>Scala as a Script language</h2><p>WARNING: Not writed yet
+<h2 id="scala-as-a-script-language">Scala as a Script language</h2>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="type-inference"></a></p>
-<h3>Type Inference</h3><p>WARNING: Not writed yet
+<h3 id="type-inference">Type Inference</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="syntax-sugar"></a></p>
-<h3>Syntax Sugar</h3><p>WARNING: Not writed yet
+<h3 id="syntax-sugar">Syntax Sugar</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-cool"></a></p>
-<h2>Scala as a cool language</h2><p>WARNING: Not writed yet
+<h2 id="scala-as-a-cool-language">Scala as a cool language</h2>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-concurrency"></a></p>
-<h3>Scala Concurrency</h3><p>WARNING: Not writed yet
+<h3 id="scala-concurrency">Scala Concurrency</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="futures-promises"></a></p>
-<h4>Futures and Promises</h4><p>WARNING: Not writed yet
+<h4 id="futures-and-promises">Futures and Promises</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="todo"></a></p>
-<h4>@todo: add topics here</h4><p>WARNING: Not writed yet
+<h4 id="-todo-add-topics-here">@todo: add topics here</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-reflection"></a></p>
-<h3>Scala Reflection</h3><p>WARNING: Not writed yet
+<h3 id="scala-reflection">Scala Reflection</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="universe"></a></p>
-<h4>Universe</h4><p>WARNING: Not writed yet
+<h4 id="universe">Universe</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="todo2"></a></p>
-<h4>Add something here</h4><p>WARNING: Not writed yet
+<h4 id="add-something-here">Add something here</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-macros"></a></p>
-<h3>Scala Macros</h3><p>WARNING: Not writed yet
+<h3 id="scala-macros">Scala Macros</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="whitebox-blackbox"></a></p>
-<h4>Whitebox and blackbox macros</h4><p>WARNING: Not writed yet
+<h4 id="whitebox-and-blackbox-macros">Whitebox and blackbox macros</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="annotations-macros"></a></p>
-<h4>Annotations Macros</h4><p>WARNING: Not writed yet
+<h4 id="annotations-macros">Annotations Macros</h4>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-xml"></a></p>
-<h3>Scala XML</h3><p>WARNING: Not writed yet
+<h3 id="scala-xml">Scala XML</h3>
+<p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="scala-string"></a></p>
-<h3>Scala String Processing</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p></div><div class="class=&quot;footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div></body></html>
+<h3 id="scala-string-processing">Scala String Processing</h3>
+<p>WARNING: Not writed yet
+TODO: write this topic.</p>
+<div class="class=&quot;footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div></body></html>
