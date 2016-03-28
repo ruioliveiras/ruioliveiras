@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><link rel="stylesheet" href="/css/blog.css"></head><body><div id="layout" class="pure-g"><div class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="header"><h1 class="brand-title">Rui Oliveiras</h1><h2 class="brand-tagline">my personal blog</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/about">aboutMe</a></li><li class="nav-item"><a href="/posts">Posts</a></li><li class="nav-item">task1: modify layout for inheritance to be able to create to a content page create a sub-indice below this indice</li><li class="nav-item">task2: format css inside post list</li><li class="nav-item">task3: get a way for tag url seach work</li><li class="nav-item">task3.1: how intenal google search work? put this here</li><li class="nav-item">task4: format somehow the content inside pre > code</li></ul></nav></div></div><div class="ros-content pure-u-1 pure-u-md-3-4"><h1 id="scala-language-base-tutorial">Scala Language base Tutorial</h1>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><link rel="stylesheet" href="/css/blog.css"></head><body><div id="layout" class="pure-g"><div class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="header"><h1 class="brand-title">Rui Oliveiras</h1><h2 class="brand-tagline">my personal blog</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/about">aboutMe</a></li><li class="nav-item"><a href="/posts">Posts</a></li><li class="nav-item">task1: get a background color or something similar</li><li class="nav-item">task2: get a way for tag url seach work</li><li class="nav-item">task3: how intenal google search work? put this here</li></ul></nav></div></div><div class="ros-content pure-u-1 pure-u-md-3-4"><h1 id="scala-language-base-tutorial">Scala Language base Tutorial</h1>
 <h4 id="hot-links">Hot links</h4>
 <p>Scala Oficial</p>
 <p>Laboratory 1</p>
@@ -88,17 +88,18 @@ Instead there are classes and singleton objects, they are managed differently.</
 <p><a name="objects-class"></a></p>
 <h3 id="objects-and-class">Objects and Class</h3>
 <p><strong>Class</strong>: is equivalent to Java. </p>
-<pre><code>// declaring
+<pre><code class="language-scala">// declaring
 class Example(favoriteNumber:Int, name:String) {
     private val dadFavoriteNumber:Int = favoriteNumber * 2
     def dadNumber():Int = dadFavoriteNumber
 }
 // instantiating
 new Example(1, &quot;ruiOliveira&quot;).dadNumber()
-</code></pre><p><strong>Object</strong>: is a tool that can be used in different situations.
+</code></pre>
+<p><strong>Object</strong>: is a tool that can be used in different situations.
 One of the used situations is to work has a singleton
 (in the nested class and object you will see that not all objects are singleton)</p>
-<pre><code>class Example(favoriteNumber:Int, name:String) { ... }
+<pre><code class="language-scala">class Example(favoriteNumber:Int, name:String) { ... }
 
 // declaring object
 object Example{
@@ -107,14 +108,15 @@ object Example{
     def newExample(name:String) = new Example(counterPlusOne(), name);
 }
 Example.newExample(&quot;Rui Oliveira&quot;)
-</code></pre><p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
+</code></pre>
+<p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
 <p><a name="traits"></a></p>
 <h3 id="traits">Traits</h3>
 <p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
 Note that traits are a conceptual thing resolver by the scala compiler in-lining methods, at the JVM is just a Interface</p>
 <p><strong>Trait example</strong></p>
 <p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
-<pre><code>trait Person{
+<pre><code class="language-scala">trait Person{
     val name:String;
     var nameCounter = 0
     def getName():String = {
@@ -128,36 +130,41 @@ Note that traits are a conceptual thing resolver by the scala compiler in-lining
 }
 
 def testTraitPerson(p:Person):Int = p.howManyTimesNameWasCalled()
-</code></pre><p><strong>Object using a Trait</strong>, note that we are defining name value.</p>
-<pre><code>object RuiOliveira extends Person{
+</code></pre>
+<p><strong>Object using a Trait</strong>, note that we are defining name value.</p>
+<pre><code class="language-scala">object RuiOliveira extends Person{
     val name = &quot;rui Oliveira&quot;;
 }
 
 testTraitPerson(RuiOliveira)
-</code></pre><p>Has you can see a object is a variable that uses Person so it can be used in the testTraitPerson</p>
+</code></pre>
+<p>Has you can see a object is a variable that uses Person so it can be used in the testTraitPerson</p>
 <p><strong>Class using a trait</strong>, note that we are declaring value name in the parameters now.</p>
-<pre><code>class OtherPerson(val name:String) extends Person
+<pre><code class="language-scala">class OtherPerson(val name:String) extends Person
 
 val p = new OtherPerson(&#39;pedro&#39;)
 testTraitPerson(p)
-</code></pre><p>Has was expected we can use traits in class&#39;s</p>
+</code></pre>
+<p>Has was expected we can use traits in class&#39;s</p>
 <p><strong>Trait on variable</strong>. The class Dog don&#39;t use the trait Person, but even so we can create a variable with that implementing what is need. </p>
-<pre><code>class Dog(val dogName:String)
+<pre><code class="language-scala">class Dog(val dogName:String)
 
 val p = new Dog(&quot;doggy&quot;) with Person {
     val name = dogName;
 }
 testTraitPerson(p)
-</code></pre><p><a name="case-class"></a></p>
+</code></pre>
+<p><a name="case-class"></a></p>
 <h3 id="case-class">Case Class</h3>
 <p>Case class are a &quot;modification&quot; to normal classes</p>
-<pre><code>// normal class
+<pre><code class="language-scala">// normal class
 class Onwer( name:String)
 class Phone( number:String,  owner:Onwer)
 // case class
 case class Owner2( name:String)
 case class Phone2( number:String, owner:Owner2)
-</code></pre><p>Creating a case class you will be access:</p>
+</code></pre>
+<p>Creating a case class you will be access:</p>
 <ul>
 <li>default create functions: toString, copy, equal and hashcode.</li>
 <li>class will be immutable by default</li>
@@ -182,22 +189,25 @@ case class Phone2( number:String, owner:Owner2)
 <p>Var and Val keyword can be used to declare objects or in class parameter.</p>
 <p><strong>var</strong> stands for variable
 <strong>val</strong> stands for value</p>
-<pre><code>var counter = 1;
+<pre><code class="language-scala">var counter = 1;
 val max = 100;
 
 while(counter &lt; max) {
   counter += 1;
   // in scala there aren&#39;t ++ operator
 }
-</code></pre><p>On this example counter variable are being setted multiple times. While if you try to set a new value in the counter, it will gives you a compile error.</p>
+</code></pre>
+<p>On this example counter variable are being setted multiple times. While if you try to set a new value in the counter, it will gives you a compile error.</p>
 <p>Usage on as a class parameter:</p>
-<pre><code>class Person(val name:String, var age:Int) {
+<pre><code class="language-scala">class Person(val name:String, var age:Int) {
   def doBirthdate:Unit = age += 1;
 }
-</code></pre><p>The parameter name will never got changed while age can be changed.</p>
+</code></pre>
+<p>The parameter name will never got changed while age can be changed.</p>
 <p>Var and Val with class types</p>
-<pre><code>class Club(val peopleList:List[Person], val owner:Person)
-</code></pre><p>On this example we have the owner parameter as val, but this don&#39;t mean that we cannot use &#39;onwer.doBirthdate&#39; and change the state of owner.
+<pre><code class="language-scala">class Club(val peopleList:List[Person], val owner:Person)
+</code></pre>
+<p>On this example we have the owner parameter as val, but this don&#39;t mean that we cannot use &#39;onwer.doBirthdate&#39; and change the state of owner.
 When we set a parameter has val, we are telling the compiler that the &#39;symbol&#39; named &#39;owner&#39; will only be setted one time.</p>
 <p>We say that a class is Immutable when all the parameters are &#39;val&#39; and all the parameters Types are also immutable.</p>
 <p><a name="higter-order"></a></p>
@@ -280,4 +290,4 @@ TODO: write this topic.</p>
 <h3 id="scala-string-processing">Scala String Processing</h3>
 <p>WARNING: Not writed yet
 TODO: write this topic.</p>
-<div class="class=&quot;footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div></body></html>
+<div class="footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div><script src="/js/lib/prism.js"></script></body></html>
