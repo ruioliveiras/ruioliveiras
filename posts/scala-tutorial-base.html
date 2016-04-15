@@ -4,59 +4,11 @@
 <p>Laboratory 1</p>
 <p><a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
 <h4 id="me-and-scala">Me and Scala</h4>
-<p>I&#39;m recent scala developer, started programing in scala in november of 2015. </p>
-<p>Scala has the goods of of all paradigms Objects, Functional, Scripting.</p>
-<h2 id="summary">Summary</h2>
-<ol>
-<li><a href="#concepts">Concepts</a><ul>
-<li><a href="#mutability-ummitability">Mutability and Immutability</a></li>
-<li><a href="#singleton">Singleton object</a></li>
-</ul>
-</li>
-<li><a href="#scala-oo">Scala as a Object Oriented Language</a><ul>
-<li><a href="#objects-class">Objects and Class</a></li>
-<li><a href="#traits">Traits</a></li>
-<li><a href="#case-class">Case Class</a></li>
-<li><a href="#generic-class">Trait and Extension</a></li>
-<li><a href="#generic-class">Generic Class</a></li>
-</ul>
-</li>
-<li><a href="#scala-functional">Scala as a Functional language</a><ul>
-<li><a href="#var-val">Var and Val</a></li>
-<li><a href="#higter-order">Higter order functions</a></li>
-<li><a href="#collections-functions">Collections functions</a></li>
-<li><a href="#-implicit-variable">Implicit Variable</a></li>
-<li><a href="#-implicit-method">Implicit Method</a></li>
-<li><a href="#-implicit-class">Implicit Class</a></li>
-</ul>
-</li>
-<li><a href="#scala-script">Scala as a Script language</a><ul>
-<li><a href="#type-inference">Type Inference</a></li>
-<li><a href="#syntax-sugar">Syntax Sugar</a> - map({}) don&#39;t, need return code block {} etc</li>
-<li>[]</li>
-</ul>
-</li>
-<li><a href="#scala-cool">Scala as a cool language</a><ul>
-<li><a href="#scala-concurrency">Scala Concurrency</a><ul>
-<li><a href="#futures-promises">Futures and Promises</a></li>
-<li><a href="#todo">@todo: add topics here</a></li>
-</ul>
-</li>
-<li><a href="#scala-reflection">Scala Reflection</a><ul>
-<li><a href="#universe">Universe</a></li>
-<li><a href="#todo2">Add something here</a></li>
-</ul>
-</li>
-<li><a href="#scala-macros">Scala Macros</a><ul>
-<li><a href="#whitebox-blackbox">Whitebox and blackbox macros</a></li>
-<li><a href="#annotations-macros">Annotations Macros</a></li>
-</ul>
-</li>
-<li><a href="#scala-xml">Scala XML</a></li>
-<li><a href="#scala-string">Scala String Processing</a></li>
-</ul>
-</li>
-</ol>
+<p>I&#39;m recent scala developer, started programming in scala in November of 2015, I&#39;m not an expert, but I think I&#39;m good enough to help you understand scala.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I start with some generic concepts (<a href="#mutability-ummitability">Mutability and Immutability</a> and <a href="#singleton">Singleton object</a>) that are not specific of the scala language.</p>
+<p>Next, I have separated the main features in 3 Charters:  <a href="#scala-oo">Scala as a Object Oriented Language</a>, <a href="#scala-functional">Scala as a Functional language</a>, <a href="#scala-script">Scala as a Script language</a>. Where I have put syntax features in the Script chapter.</p>
+<p>I the end I also some other topic, Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; Concurrency  which in Scala is very intuitive; Native XML scala feature; and some notes about string processing. </p>
 <p><a name="concepts"></a></p>
 <h2 id="concepts">Concepts</h2>
 <p>Before we get started, we must know about a few general concepts. 
@@ -65,12 +17,12 @@ But where in Scala they are more used or has more importance.</p>
 <p><a name="mutability-ummitability"></a></p>
 <h3 id="mutability-and-immutability">Mutability and Immutability</h3>
 <p>Immutability is one of pillars of a functional language.</p>
-<p><strong> Mutable variable </strong> its state can change with the time.</p>
-<p><strong> Immutable variable </strong> its state can&#39;t change with the time.</p>
+<p><strong> Mutable variable </strong> its state can change over time.</p>
+<p><strong> Immutable variable </strong> its state can&#39;t change over time.</p>
 <p>Immutability advantages</p>
 <ul>
 <li>Is very good for concurrency (many threads changing the value of one variable at same time may be dangerous )</li>
-<li>Turn your code more clean</li>
+<li>Code more clean</li>
 </ul>
 <p>Immutability disadvantages</p>
 <ul>
@@ -78,9 +30,9 @@ But where in Scala they are more used or has more importance.</p>
 </ul>
 <p><a name="singleton"></a></p>
 <h3 id="singleton-object">Singleton object</h3>
-<p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.
-In Java there are the static keyword that puts the method or the variable into the singleton object of the class.
-But in Scala there the classes don&#39;t have a singleton object.
+<p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.</p>
+<p>In Java a class have its static scope, where are the declared static methods and variables. The static scope of the class are a built-in singleton object</p>
+<p>But in Scala there aren&#39;t the keyword static.
 Instead there are classes and singleton objects, they are managed differently.</p>
 <p><a name="scala-oo"></a></p>
 <h2 id="scala-as-a-object-oriented-language">Scala as a Object Oriented Language</h2>
@@ -97,11 +49,12 @@ class Example(favoriteNumber:Int, name:String) {
 new Example(1, &quot;ruiOliveira&quot;).dadNumber()
 </code></pre>
 <p><strong>Object</strong>: is a tool that can be used in different situations.
-One of the used situations is to work has a singleton
+One used situation is to work has a singleton
 (in the nested class and object you will see that not all objects are singleton)</p>
-<pre><code class="language-scala">class Example(favoriteNumber:Int, name:String) { ... }
+<pre><code class="language-scala">// a class
+class Example(favoriteNumber:Int, name:String) { ... }
 
-// declaring object
+// a singleton object
 object Example{
     var counter:Int = 10
     def counterPlusOne():Int ={ counter += 1; counter }  
@@ -146,7 +99,7 @@ val p = new OtherPerson(&#39;pedro&#39;)
 testTraitPerson(p)
 </code></pre>
 <p>Has was expected we can use traits in class&#39;s</p>
-<p><strong>Trait on variable</strong>. The class Dog don&#39;t use the trait Person, but even so we can create a variable with that implementing what is need. </p>
+<p><strong>Trait on variable</strong>. (Anonymous declaration) The class Dog don&#39;t use the trait Person, even so we can create a variable with that implementing what is needed. </p>
 <pre><code class="language-scala">class Dog(val dogName:String)
 
 val p = new Dog(&quot;doggy&quot;) with Person {
@@ -212,24 +165,57 @@ When we set a parameter has val, we are telling the compiler that the &#39;symbo
 <p>We say that a class is Immutable when all the parameters are &#39;val&#39; and all the parameters Types are also immutable.</p>
 <p><a name="higter-order"></a></p>
 <h3 id="lambda-functions">Lambda functions</h3>
-<p>WARNING: Not writed yet
-TODO: write this topic.</p>
+<p>The syntax to create a lambda function are:</p>
+<pre><code class="language-scala">val f = (x:Int) =&gt; x*2
+f(2) 
+// will give 4
+</code></pre>
+<p>We can receive function as parameter</p>
+<pre><code class="language-scala">val op1 = (x:Int, y:Int) =&gt; x * 2 + y
+val f = (x:Int, y:Int, op: ((Int,Int) =&gt; Int) ) =&gt; op(x,y)
+f(2,3,op1) 
+// will give 7
+</code></pre>
 <p><a name="collections-functions"></a></p>
 <h3 id="collections-functions">Collections functions</h3>
 <p>WARNING: Not writed yet
 TODO: write this topic.</p>
 <p><a name="-implicit-variable"></a></p>
 <h3 id="implicit-variable">Implicit Variable</h3>
-<p>WARNING: Not writed yet
-TODO: write this topic.</p>
+<p>Implicit variables are a mechanism to avoid always be passing some variable into a function, normally this is very useful on recursive functions.</p>
+<pre><code class="language-scala">// also on this example we are using Scala string processing
+def f(name:String)(implicit location:String) = s&quot;hello $name, you are at $location&quot;
+implicit  val l = &quot;lisbon&quot;
+f(&quot;rui&quot;)
+// will give &#39;hello rui, you are at lisbon&#39;
+f(&quot;rui&quot;)(&quot;porto&quot;)
+// will give &#39;hello rui, you are at porto&#39;
+</code></pre>
+<p>The value l is been declared as implicit of type String, when ever its needed a Implicit String the value l will be used.</p>
+<p>We can import implicit variable and use in other context:</p>
+<pre><code class="language-scala">object o1{ implicit val i = 500}
+def f(implicit h:Int) = h * 2
+// importing the variable i
+import o1._
+// we are calling the function f (no parentheses need)
+// and with the result call toString
+printf(f.toString);
+</code></pre>
+<p>Also we can have more than one variable as implicit input:</p>
+<pre><code class="language-scala">def f(i:Int)(implicit k:Int, s:String):String = i match {
+  case 0 =&gt; s + k
+  case _ =&gt; f(i - 1)
+}
+implicit val i = 100;
+implicit val i = &quot;i has &quot;;
+f(50)
+</code></pre>
 <p><a name="-implicit-method"></a></p>
 <h3 id="implicit-method">Implicit Method</h3>
-<p>WARNING: Not writed yet
-TODO: write this topic.</p>
+<p>Implicit methods are used to convert a variable into other</p>
 <p><a name="-implicit-class"></a></p>
 <h3 id="implicit-class">Implicit Class</h3>
-<p>WARNING: Not writed yet
-TODO: write this topic.</p>
+<p>Implicit class are used to lay methods in certain types</p>
 <p><a name="scala-script"></a></p>
 <h2 id="scala-as-a-script-language">Scala as a Script language</h2>
 <p>WARNING: Not writed yet
