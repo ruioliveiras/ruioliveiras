@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="icon" type="image/png" href="favicon.png" sizes="16x16"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><link rel="stylesheet" href="/css/blog.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="ros-sidebar-content pure-u-20-24"><h1 class="brand-title"><a href="/" class="ros-super-cool-url">Rui Oliveiras</a></h1><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/aboutme.html" class="ros-cool-url">AboutMe </a></li><li class="nav-item"><a href="/posts" class="ros-cool-url">Posts</a></li><li class="nav-item"><a href="/hotlinks.html" class="ros-cool-url">HotLinks</a></li><li class="nav-item"><a href="/cv_en.pdf" class="ros-cool-url">Resume (CV)</a></li><li class="nav-item"><a href="https://bitbucket.org/ruioliveiras/" class="ros-cool-url">Portofolio</a></li><li class="nav-item"><a href="/tasks.html" class="ros-cool-url">Tasks</a></li></ul></nav><h2>Summary</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="#scala-oo" class="ros-cool-url">Scala as a Object Oriented Language</a></li><ul class="nav-list"><li class="nav-item"><a href="#objects-class" class="ros-cool-url">Objects and Class</a></li><li class="nav-item"><a href="#traits" class="ros-cool-url">Traits</a></li><li class="nav-item"><a href="#case-class" class="ros-cool-url">Case Class</a></li><li class="nav-item"><a href="#generic-class" class="ros-cool-url">Generic Class</a></li></ul></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-md-3-4"><h1 id="scala-as-a-object-oriented-language">Scala as a Object Oriented Language</h1>
+<p>In Scala we can do everything that we can do in JAVA.</p>
+<p><a name="objects-class"></a></p>
+<h3 id="objects-and-class">Objects and Class</h3>
+<p><strong>Class</strong>: is equivalent to Java. </p>
+<pre><code class="language-scala">// declaring
+class Example(favoriteNumber:Int, name:String=&quot;&quot;) {
+    private val dadFavoriteNumber:Int = favoriteNumber * 2
+    // Secondary constructor
+    def this(favoritNumber:String) { 
+        this(favoritNumber.toInt, &quot;defaultName&quot;)
+    }
+
+    def dadNumber():Int = {
+        return dadFavoriteNumber
+    } 
+}
+// instantiating
+val x = new Example(1, &quot;ruiOliveira&quot;)
+// using a method
+x.dadNumber()
+</code></pre>
+<pre><code class="language-scala">class Example(favoriteNumber:Int, name:String=&quot;&quot;)
+</code></pre>
+<p>Here we are declaring instance variables, but also the constructor. It is also possible to create as many constructors as you need, like java.</p>
+<p><strong>Object</strong>: is a tool that can be used in different situations.
+One used situation is to work has a singleton
+(in the nested class and object you will see that not all objects are singleton)</p>
+<pre><code class="language-scala">// a class
+class Example(favoriteNumber:Int, name:String) { ... }
+
+// a singleton object
+object Example{
+    var counter:Int = 10
+    def counterPlusOne():Int = { counter += 1; return counter }  
+    def newExample(name:String) = new Example(counterPlusOne(), name);
+}
+Example.newExample(&quot;Rui Oliveira&quot;)
+</code></pre>
+<p>In scala a class don&#39;t have static methods or variables, what you can do is to create a Object with the same name of the class.</p>
+<p><a name="traits"></a></p>
+<h3 id="traits">Traits</h3>
+<p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
+Note that traits are a conceptual thing resolver by the scala compiler in-lining methods. At the JVM a trait is just a Interface</p>
+<p><strong>Trait example</strong></p>
+<p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
+<pre><code class="language-scala">trait Person{
+    val name:String;
+    var nameCounter = 0
+    def getName():String = {
+        nameCounter += 1;
+        // value name is the last thing of this block so will be returned 
+        // Keep this in mind, scala don&#39;t require return keyword 
+        return name;
+    }
+
+    def howManyTimesNameWasCalled() = {return nameCounter;}
+}
+
+def testTraitPerson(p:Person):Int ={return p.howManyTimesNameWasCalled();}
+</code></pre>
+<p><strong>Object using a Trait</strong>, note that we are defining name value.</p>
+<pre><code class="language-scala">object RuiOliveira extends Person{
+    val name = &quot;rui Oliveira&quot;;
+}
+
+testTraitPerson(RuiOliveira)
+</code></pre>
+<p>Has you can see a object is a variable that uses Person so it can be used in the testTraitPerson</p>
+<p><strong>Class using a trait</strong>, note that we are declaring value name in the parameters now.</p>
+<pre><code class="language-scala">class OtherPerson(val name:String) extends Person
+
+val p = new OtherPerson(&#39;pedro&#39;)
+testTraitPerson(p)
+</code></pre>
+<p>Has was expected we can use traits in class&#39;s</p>
+<p><strong>Trait on variable</strong>. (Anonymous declaration) The class Dog don&#39;t use the trait Person, even so we can create a variable with that implementing what is needed. </p>
+<pre><code class="language-scala">class Dog(val dogName:String)
+
+val p = new Dog(&quot;doggy&quot;) with Person {
+    val name = dogName;
+}
+testTraitPerson(p)
+</code></pre>
+<p><a name="case-class"></a></p>
+<h3 id="case-class">Case Class</h3>
+<p>Typically you gonna use case class for data holder class.</p>
+<p>Case class are a class with couple of default things  </p>
+<pre><code class="language-scala">//a normal class
+class Onwer( name:String)
+class Phone( number:String,  owner:Onwer)
+//a case class
+case class Owner2( name:String)
+case class Phone2( number:String, owner:Owner2)
+</code></pre>
+<p>Creating a case class you will be access:</p>
+<ul>
+<li>default create functions: toString, copy, equal and hashcode.</li>
+<li>class will be immutable by default</li>
+<li>default create singleton object with method unapplay and apply functions</li>
+</ul>
+<p><strong>toString</strong> the default implementation of toString, will be very pretty for debug: &quot;Phone(&quot;91501XXXX&quot;, Owner(&quot;Rui Oliveira&quot;))&quot;
+<strong>copy</strong> is a very handy method to create copy of an variable, modifying some attribute: </p>
+<pre><code class="language-scala">val phoneCopy = phone.copy(number=&quot;newNumber&quot;)
+</code></pre>
+<p><strong>apply</strong> Is a cool method that i explain in the future
+<strong>unaplly</strong> I don&#39;t know what exactly it does, go to google! </p>
+<h4 id="case-class-with-match-case">Case class with match/case</h4>
+<p>With a case class also you can do something like this:</p>
+<pre><code class="language-scala">val phoneCopy = phone.copy(number=&quot;newNumber&quot;)
+phoneCopy match {
+    case Phone(&quot;phone1&quot;, _) =&gt; ..
+    case Phone(&quot;phone2&quot;, _) =&gt; ..
+    case _ =&gt; ..
+}
+</code></pre>
+<p>Will be more explained at Scala as Functional Language</p>
+<p><a name="generic-class"></a></p>
+<h3 id="generic-class">Generic Class</h3>
+<h3 id="inner-class-and-object">Inner Class and Object</h3>
+<div class="footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div><script src="/js/lib/prism.js"></script><script src="/js/ui.js"></script></body></html>

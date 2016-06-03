@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="icon" type="image/png" href="favicon.png" sizes="16x16"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><link rel="stylesheet" href="/css/blog.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-md-1-4">     <div class="ros-sidebar-content pure-u-20-24"><h1 class="brand-title"><a href="/" class="ros-super-cool-url">Rui Oliveiras</a></h1><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/aboutme.html" class="ros-cool-url">AboutMe </a></li><li class="nav-item"><a href="/posts" class="ros-cool-url">Posts</a></li><li class="nav-item"><a href="/hotlinks.html" class="ros-cool-url">HotLinks</a></li><li class="nav-item"><a href="/cv_en.pdf" class="ros-cool-url">Resume (CV)</a></li><li class="nav-item"><a href="https://bitbucket.org/ruioliveiras/" class="ros-cool-url">Portofolio</a></li><li class="nav-item"><a href="/tasks.html" class="ros-cool-url">Tasks</a></li></ul></nav><h2>Summary</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="#concepts" class="ros-cool-url">Concepts</a></li><ul class="nav-list"><li class="nav-item"><a href="#mutability-ummitability" class="ros-cool-url">Mutability and Immutability</a></li><li class="nav-item"><a href="#singleton" class="ros-cool-url">Singleton object</a></li></ul></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-md-3-4"><h1 id="scala-language-base-tutorial">Scala Language base Tutorial</h1>
+<h4 id="hot-links">Hot links</h4>
+<p>Scala Oficial</p>
+<p><a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
+<h4 id="me-and-scala">Me and Scala</h4>
+<p>I&#39;m recent scala developer, started programming in scala in November of 2015, I&#39;m not an expert, but I think I&#39;m good enough to help you understand scala.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I will start with some generic concepts (<a href="#mutability-ummitability">Mutability and Immutability</a> and <a href="#singleton">Singleton object</a>) that are not specific of the scala language, but very important.</p>
+<p>Next, I have separated the main features of scala in 3 main posts:  <a href="/posts/scala-02-oo">Scala as a Object Oriented Language</a>, <a href="/posts/scala-03-functional">Scala as a Functional language</a>, <a href="/posts/scala-04-script">Scala as a Script language</a></p>
+<p>There are also a <a href="/posts/scala-05-extra">Extra Post</a> with, some extra topics: Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; Concurrency which in Scala is very intuitive; Native XML scala feature; and some notes about string processing. </p>
+<p><a name="concepts"></a></p>
+<h2 id="concepts">Concepts</h2>
+<p>Before we get started, we must know about a few general concepts. 
+Concepts that are not specific from the Scala language but general from the programming.
+But where in Scala they are more used or has more importance.</p>
+<p><a name="mutability-ummitability"></a></p>
+<h3 id="mutability-and-immutability">Mutability and Immutability</h3>
+<p>Immutability is one of pillars of a functional language.</p>
+<p><strong> Mutable variable </strong> its state can change over time.</p>
+<p><strong> Immutable variable </strong> its state can&#39;t change over time.</p>
+<p>Immutability advantages</p>
+<ul>
+<li>Is very good for concurrency (many threads changing the value of one variable at same time may be dangerous )</li>
+<li>Code more clean</li>
+</ul>
+<p>Immutability disadvantages</p>
+<ul>
+<li>May be  costly to be recreating objects on each change</li>
+</ul>
+<p><a name="singleton"></a></p>
+<h3 id="singleton-object">Singleton object</h3>
+<p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.</p>
+<p>In Java a class have its static scope, where are the declared static methods and variables. The static scope of the class are a built-in singleton object</p>
+<p>But in Scala there aren&#39;t the keyword static.
+Instead there are classes and singleton objects, they are managed differently.</p>
+<div class="footer"></div><div class="pure-menu pure-menu-horizontal"><ul><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas1</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas2</a></li><li class="pure-menu-item"><a href="/" class="pure-menu-link">cenas3</a></li></ul></div></div></div><script src="/js/lib/prism.js"></script><script src="/js/ui.js"></script></body></html>
