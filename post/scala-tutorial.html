@@ -1,13 +1,24 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="stylesheet" href="/css/lib/pure.css"><link rel="stylesheet" href="/css/lib/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><!--link(rel='stylesheet' href='/css/blog.css')--><link rel="stylesheet" href="/css/side-bar.css"><link rel="stylesheet" href="/css/base.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-lg-8-24">     <div class="ros-sidebar-content pure-u-20-24"><div class="brand-title pure-g"><div class="pure-u-2-5"><img src="/img/me.jpg" class="pure-img"></div><span class="pure-u-3-5"><a href="/" class="brand-title-text ros-super-cool-url">Rui <br> Oliveiras</a></span></div><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/posts" class="ros-cool-url">Blog</a></li><li class="nav-item"><a href="/post/hotlinks.html" class="ros-cool-url">HotLinks</a></li><li class="nav-item"><a href="/aboutme.html" class="ros-cool-url">AboutMe </a></li><li class="nav-item"><a href="/file/cv_en.pdf" class="ros-cool-url">Resume</a></li><li class="nav-item"><a href="https://bitbucket.org/ruioliveiras/" class="ros-cool-url">Portofolio</a></li></ul></nav><h2 class="brand-tagline">Summary</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="#concepts" class="ros-cool-url">Concepts</a></li><ul class="nav-list"><li class="nav-item"><a href="#mutability-ummitability" class="ros-cool-url">Mutability and Immutability</a></li><li class="nav-item"><a href="#singleton" class="ros-cool-url">Singleton object</a></li></ul><li class="nav-item"><a href="#scala-oo" class="ros-cool-url">Scala as a Object Oriented Language</a></li><ul class="nav-list"><li class="nav-item"><a href="#objects-class" class="ros-cool-url">Objects and Class</a></li><li class="nav-item"><a href="#traits" class="ros-cool-url">Traits</a></li><li class="nav-item"><a href="#case-class" class="ros-cool-url">Case Class</a></li><li class="nav-item"><a href="#generic-class" class="ros-cool-url">Generic Class</a></li></ul><li class="nav-item"><a href="#scala-functional" class="ros-cool-url">Scala as a Functional language</a></li><ul class="nav-list"><li class="nav-item"><a href="#var-val" class="ros-cool-url">Var and Val</a></li><li class="nav-item"><a href="#higter-order" class="ros-cool-url">Higter order functions</a></li><li class="nav-item"><a href="#collections-functions" class="ros-cool-url">Collections functions</a></li><li class="nav-item"><a href="#-implicit-variable" class="ros-cool-url">Implicit Variable</a></li><li class="nav-item"><a href="#-implicit-method" class="ros-cool-url">Implicit Method</a></li><li class="nav-item"><a href="#-implicit-class" class="ros-cool-url">Implicit Class</a></li></ul><li class="nav-item"><a href="#scala-script" class="ros-cool-url">Scala as a Script language</a></li><ul class="nav-list"><li class="nav-item"><a href="#type-inference" class="ros-cool-url">Type Inference</a></li><li class="nav-item"><a href="#syntax-sugar" class="ros-cool-url">Syntax Sugar</a></li></ul><li class="nav-item"><a href="#scala-concurrency" class="ros-cool-url">Scala Concurrency</a></li><ul class="nav-list"><li class="nav-item"><a href="#futures-promises" class="ros-cool-url">Futures and Promises</a></li><li class="nav-item"><a href="#todo" class="ros-cool-url">todo: add topics here</a></li></ul><li class="nav-item"><a href="#scala-reflection" class="ros-cool-url">Scala Reflection</a></li><ul class="nav-list"><li class="nav-item"><a href="#universe" class="ros-cool-url">Universe</a></li><li class="nav-item"><a href="#todo2" class="ros-cool-url">Add something here</a></li></ul><li class="nav-item"><a href="#scala-macros" class="ros-cool-url">Scala Macros</a></li><ul class="nav-list"><li class="nav-item"><a href="#whitebox-blackbox" class="ros-cool-url">Whitebox and blackbox macros</a></li><li class="nav-item"><a href="#annotations-macros" class="ros-cool-url">Annotations Macros</a></li></ul><li class="nav-item"><a href="#scala-xml" class="ros-cool-url">Scala XML</a></li><li class="nav-item"><a href="#scala-string" class="ros-cool-url">Scala String Processing</a></li></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-lg-16-24"><h1 id="scala-language-base-tutorial">Scala Language base Tutorial</h1>
 <h4 id="hot-links">Hot links</h4>
-<p>Scala Oficial</p>
-<p>Laboratory 1</p>
-<p><a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
+<p>Scala Oficial: <a href="http://www.scala-lang.org">http://www.scala-lang.org</a></p>
+<p>Nice post: <a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
+<p><strong>How Install</strong>: <a href="http://www.scala-lang.org/download/install.html">http://www.scala-lang.org/download/install.html</a> ;</p>
+<p>It is just:</p>
+<ol>
+<li>Download scala</li>
+<li>Crete path variable $SCALA_HOME </li>
+<li>Update the variable $PATH to have the $SCALA_HOME/bin
+And you have the &#39;scala&#39; command wich gives you a Scala intepretor</li>
+</ol>
+<p><strong>Scala Ide</strong>: <a href="http://scala-ide.org">http://scala-ide.org</a>
+(an easy way to install and work with scala)</p>
 <h4 id="me-and-scala">Me and Scala</h4>
-<p>I&#39;m recent scala developer, started programming in scala in November of 2015, I&#39;m not an expert, but I think I&#39;m good enough to help you understand scala.</p>
+<p>I started programming in scala in November of 2015, I&#39;m not an expert, but I think I&#39;m good enough to help you understand scala.</p>
 <h2 id="introduction">Introduction</h2>
-<p>I start with some generic concepts (<a href="#mutability-ummitability">Mutability and Immutability</a> and <a href="#singleton">Singleton object</a>) that are not specific of the scala language.</p>
-<p>Next, I have separated the main features in 3 Charters:  <a href="#scala-oo">Scala as a Object Oriented Language</a>, <a href="#scala-functional">Scala as a Functional language</a>, <a href="#scala-script">Scala as a Script language</a>. Where I have put syntax features in the Script chapter.</p>
+<p>I will start with some generic concepts (<a href="#mutability-ummitability">Mutability and Immutability</a> and <a href="#singleton">Singleton object</a>) that are not specific of the scala language.</p>
+<p>Next, I have separated the main features in 3 Charters:  <a href="#scala-oo">Scala as a Object Oriented Language</a>, <a href="#scala-functional">Scala as a Functional language</a>, <a href="#scala-script">Scala as a Script language</a>. 
+I like to say that scala was the qualities of all kind paradigms.
+It is possible to take advantage of each paradigm.</p>
 <p>I the end I also some other topic, Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; Concurrency  which in Scala is very intuitive; Native XML scala feature; and some notes about string processing. </p>
 <p><a name="concepts"></a></p>
 <h2 id="concepts">Concepts</h2>
@@ -31,7 +42,7 @@ But where in Scala they are more used or has more importance.</p>
 <p><a name="singleton"></a></p>
 <h3 id="singleton-object">Singleton object</h3>
 <p>Singleton objects are unique at the runtime. There will not exist at same time two instances of this objects types.</p>
-<p>In Java a class have its static scope, where are the declared static methods and variables. The static scope of the class are a built-in singleton object</p>
+<p>In Java, a class have its own static scope, where are declared static methods and variables. This static scope of the class, in java, are nothing more that a built-in singleton object</p>
 <p>But in Scala there aren&#39;t the keyword static.
 Instead there are classes and singleton objects, they are managed differently.</p>
 <p><a name="scala-oo"></a></p>
@@ -65,8 +76,11 @@ Example.newExample(&quot;Rui Oliveira&quot;)
 <p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
 <p><a name="traits"></a></p>
 <h3 id="traits">Traits</h3>
-<p>Traits is equivalent to JAVA interface, but with state variables and method implementations.
-Note that traits are a conceptual thing resolver by the scala compiler in-lining methods, at the JVM is just a Interface</p>
+<p>A trait is a <strong>tool</strong>, a tool that can be compared to a JAVA interface. With the different
+that you can have method implementations and variable initialization.</p>
+<p>After the compilation, as trait is nothing more that a interface for the JVM. They are just
+inlining the methods implementations and the variable declarions where ever the trait
+is used</p>
 <p><strong>Trait example</strong></p>
 <p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
 <pre><code class="language-scala">trait Person{
@@ -178,8 +192,64 @@ f(2,3,op1)
 </code></pre>
 <p><a name="collections-functions"></a></p>
 <h3 id="collections-functions">Collections functions</h3>
-<p>WARNING: Not writed yet
-TODO: write this topic.</p>
+<p>To know more Collectons, check the Collection section. On this sub-section I will only 
+explain the functinal approuch of the Collections</p>
+<p><strong>Map</strong> Transforming a List into an other list with an operation</p>
+<pre><code class="language-scala">val l:List[Int] = List(1,2,3,4);
+val op = (x:Int) =&gt; x * 2
+// running the operation &#39;op&#39; over each element 
+val l2:List[Int] = l.map(op);
+// l2 will have: List(2,4,6,8)
+// l1 will keep the List(1,2,3,4)
+</code></pre>
+<p>With some systatix sugar (which i&#39;m gooing to explain in [ref section3]).
+We can simplie write</p>
+<pre><code class="language-scala">val l:List[Int] = List(1,2,3,4);
+val l2:List[Int] = l.map({ x =&gt; x * 2});
+val l3:List[Int] = l.map{ x =&gt; x * 2};
+val l4:List[Int] = l.map(x =&gt; x * 2);
+val l5:List[Int] = l.map(_ * 2);
+// l2, l3, l4, l5 are exatly the same
+</code></pre>
+<p><strong> Filter </strong> will select some elements</p>
+<pre><code class="language-scala">val l:List[Int] = List(1,2,3,4);
+val l2 = l.map(x =&gt; x * 2).filter(x =&gt; x &gt; 5).map(x =&gt; x + 1)
+// 1º map result List(2,4,6,8)
+// 2º filter result List(6,8)
+// final result List(7,8)
+</code></pre>
+<p><strong> Useful functions </strong> there are many useful functions over collections.</p>
+<put here some examples>
+
+<p><strong> reduce </strong> will transform a list[A] into an A, this method assumes that the List,
+are not empty.</p>
+<pre><code class="language-scala">// Lets see the reduce signure:
+def reduce[A1 &gt;: A](op: (A1, A1) ⇒ A1): A1
+// ...
+val l:List[Int] = List(1,2,3,4);
+l.reduce{ (a,b) =&gt; a + b }
+// will give 9
+List[Int]().reduce{ (a,b) =&gt; a + b }
+// empty list will throw excepton!!
+</code></pre>
+<p><strong> foldRight and foldLeft </strong> is like reduce, but more useful.</p>
+<pre><code class="language-scala">// Lets see the signures:
+def foldRight[B](z: B)(op: (A, B) ⇒ B): B
+// will produce something like &#39;op(x_1, op(x_2, ... op(x_n, z)...))&#39;
+def foldLeft[B](z: B)(f: (B, A) ⇒ B): B
+// will produce something like &#39;op(...op(z, x_1), x_2, ..., x_n)&#39;
+</code></pre>
+<p>With the fold we can transform a list into objects, example:</p>
+<pre><code class="language-scala">val l:List[Int] = List(1,2,3,4);
+l.foldLeft(&quot;0&quot;){(z:String, i:Int) =&gt; z + &quot;,&quot; +  i.toString }
+// will produce 0,1,2,3,4
+// op(op(op(op(&quot;0&quot;, 1), 2 ), 3), 4)
+</code></pre>
+<pre><code class="language-scala">val l:List[Int] = List(1,2,3,4);
+l.foldRight(&quot;0&quot;){(i:Int, z:String) =&gt; z + &quot;,&quot; + i.toString  }
+// will produce 0,4,3,2,1
+// op(1,op(2,op(3,op(4,&quot;0&quot;))))
+</code></pre>
 <p><a name="-implicit-variable"></a></p>
 <h3 id="implicit-variable">Implicit Variable</h3>
 <p>Implicit variables are a mechanism to avoid always be passing some variable into a function, normally this is very useful on recursive functions.</p>
