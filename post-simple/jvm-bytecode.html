@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="stylesheet" href="/css/lib/pure.css"><link rel="stylesheet" href="/css/lib/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><!--link(rel='stylesheet' href='/css/blog.css')--><link rel="stylesheet" href="/css/side-bar.css"><link rel="stylesheet" href="/css/base.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-lg-8-24">     <div class="ros-sidebar-content pure-u-20-24"><div class="brand-title pure-g"><div class="pure-u-2-5"><img src="/img/me.jpg" class="pure-img"></div><span class="pure-u-3-5"><a href="/" class="brand-title-text ros-super-cool-url">Rui <br> Oliveiras</a></span></div><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/posts" class="ros-cool-url">Blog</a></li><li class="nav-item"><a href="/post/hotlinks.html" class="ros-cool-url">HotLinks</a></li><li class="nav-item"><a href="/aboutme.html" class="ros-cool-url">AboutMe </a></li><li class="nav-item"><a href="/cv.pdf" class="ros-cool-url">Resume</a></li><li class="nav-item"><a href="https://bitbucket.org/ruioliveiras/" class="ros-cool-url">Portofolio</a></li></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-lg-16-24"><h1>Runtime JVM Bytecode manipulation</h1><p>Java and Scala and other languages that compiles to JVM, <strong>are more dynamic that you may thing</strong>.</p>
+<p>As you already know Java and Scala compiles to JVM Bytecode. And this bytecode that probably scares you
+is easy that you may thing. I will not explain it on this post, but lets take a look.</p>
+<h2>JVM ByteCode Overview</h2><p>The Full spessification can be found on the <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/">Oracle, Chapter 2. The Structure of the Java Virtual Machine</a></p>
+<ul>
+<li>Each java class or scala class will create a <em>&#39;.class&#39;</em> file.
+Note, in Scala each Lamda function will create  each own .class file, this is just a trick of the Scala compiler.</li>
+<li>A goog way to underted the data releated to each &#39;.class&#39; is with ASM:<ul>
+<li>in the java ASM guide, go to section 2.1, Class / Structure  </li>
+</ul>
+</li>
+<li><p>Primitive types and Reference types,</p>
+<ul>
+<li>in the JVM there exist two kind of types primitives and references.</li>
+</ul>
+</li>
+<li><p>Method Call Example
+Original Code</p>
+<pre><code class="language-java">public void m(Example a) {
+this.hello((String) a.get(&quot;ola&quot;));
+}
+</code></pre>
+<p>The ASM code, you can generate something like this using ASMifier.</p>
+<pre><code class="language-scala">mv.visitVarInsn(ALOAD, 0)
+//stack [this]
+mv.visitVarInsn(ALOAD, 1); // put the first argument in the stack
+// stack:[this, &lt;1º argument&gt;]
+mv.visitLdcInsn(&quot;ola&quot;);
+// stack:[this, &lt;1º argument&gt;, &quot;ola&quot;]
+mv.visitMethodInsn(INVOKEVIRTUAL, &quot;com/Example&quot;, &quot;get&quot;, &quot;(Ljava/lang/String;)Ljava/lang/Object;&quot;, false);
+// will call method &lt;1º argument&gt;.get(&quot;ola&quot;)
+// stack:[this, &lt;result of get method&gt;]
+mv.visitTypeInsn(CHECKCAST, &quot;java/lang/String&quot;);
+mv.visitMethodInsn(INVOKEVIRTUAL, &quot;com/Main&quot;, &quot;hello&quot;, &quot;(Ljava/lang/String;)Ljava/lang/String;&quot;, false);
+// Stack: [&lt;the result of hello&gt;]
+</code></pre>
+</li>
+<li><p>Instantiate new Varible</p>
+<pre><code class="language-scala">mv.visitTypeInsn(NEW, &quot;com/Hello&quot;);
+// stack: [newObjReference ]
+mv.visitInsn(DUP); // duplicate the top of the stack
+// stack: [newObjReference , newObjReference  ]
+// local variable access, the initialization was omitted
+mv.visitVarInsn(ALOAD, 2);
+// stack: [newObjReference , newObjReference, localVariable2 ]
+mv.visitVarInsn(ALOAD, 3);
+// stack: [newObjReference , newObjReference, localVariable2,  localVariable3 ]
+mv.visitVarInsn(ALOAD, 4);
+// stack: [newObjReference , newObjReference, localVariable2,  localVariable3, localVariable4 ]
+mv.visitMethodInsn(INVOKESPECIAL, &quot;com/Hello&quot;, &quot;&lt;init&gt;&quot;, &quot;(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V&quot;, false);
+// call the constructor, the constructor is a special method called &lt;init&gt;
+</code></pre>
+</li>
+</ul>
+<h2>Bytecode manipulation tools</h2><ul>
+<li><p><strong>Java ASM</strong> <a href="http://asm.ow2.org">http://asm.ow2.org</a> - it is very flexible you can do almost everything.
+From change existing .class to create new .class, to just analysis the code.
+It has a nice <a href="http://download.forge.objectweb.org/asm/asm4-guide.pdf">guide</a>.</p>
+<p>Also it includes a tool (ASMifier) that inspect a class and generate the source
+code to create the provided class in runtime. This is very useful for debug proposes</p>
+</li>
+<li><p><strong>ByteBuddy</strong> <a href="http://bytebuddy.net/#/">bytebuddy.net</a> - is a easy way to manipulate class.
+ It is just possible to do some common use-cases, like for example fields manipulation, create mocks, proxies, etc..
+ It has a very simple interface and does not require an understanding of Java byte code.</p>
+</li>
+<li><p><strong> Janino </strong> <a href="http://janino-compiler.github.io/janino/">janino-compiler.github.io/janino/</a> - Janino is a ligth-weigh runtime Java compiler. It can create bytecode in runtime, you write a string with valid Java Code and Janino will create the bytecode.
+janino does not implement all the Java features, but just the sufficient.
+It is way more easy to write Java code and compile it using Janino than create the same code with ASM.</p>
+<p>The uses-cases of something like that are unlimited, use your imagination!!  </p>
+</li>
+</ul><!--div(class='footer')--><!--div(class='pure-menu pure-menu-horizontal')--><!--  ul--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas1--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas2--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas3--></div></div><script src="/js/lib/prism.js"></script><script src="/js/ui.js"></script></body></html>
