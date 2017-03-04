@@ -12,14 +12,20 @@ And you have the &#39;scala&#39; command wich gives you a Scala intepretor</li>
 </ol>
 <p><strong>Scala Ide</strong>: <a href="http://scala-ide.org">http://scala-ide.org</a>
 (an easy way to install and work with scala)</p>
-<h4 id="me-and-scala">Me and Scala</h4>
-<p>I started programming in scala in November of 2015, I&#39;m not an expert, but I think I&#39;m good enough to help you understand scala.</p>
+<p><strong>SBT</strong>: <a href="http://www.scala-sbt.org/">http://www.scala-sbt.org/</a>
+Is the scala build tool which manage dependencies. Sbt is for scala like Maven is for JAVA.</p>
 <h2 id="introduction">Introduction</h2>
 <p>I will start with some generic concepts (<a href="#mutability-ummitability">Mutability and Immutability</a> and <a href="#singleton">Singleton object</a>) that are not specific of the scala language.</p>
 <p>Next, I have separated the main features in 3 Charters:  <a href="#scala-oo">Scala as a Object Oriented Language</a>, <a href="#scala-functional">Scala as a Functional language</a>, <a href="#scala-script">Scala as a Script language</a>. 
 I like to say that scala was the qualities of all kind paradigms.
 It is possible to take advantage of each paradigm.</p>
-<p>I the end I also some other topic, Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; Concurrency  which in Scala is very intuitive; Native XML scala feature; and some notes about string processing. </p>
+<p>I the end I picked up some other topic: Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; 
+Concurrency  which in Scala is very intuitive; 
+Native XML scala feature;
+and some notes about string processing. </p>
+<p>This tutorial is currently beeing writed in my free times, so in the end there are some topics which are not writed yet .</p>
+<h2 id="scala-ecosystem">Scala Ecosystem</h2>
+<p>Tools</p>
 <p><a name="concepts"></a></p>
 <h2 id="concepts">Concepts</h2>
 <p>Before we get started, we must know about a few general concepts. 
@@ -47,43 +53,67 @@ But where in Scala they are more used or has more importance.</p>
 Instead there are classes and singleton objects, they are managed differently.</p>
 <p><a name="scala-oo"></a></p>
 <h2 id="scala-as-a-object-oriented-language">Scala as a Object Oriented Language</h2>
-<p>In Scala we can do everything that we can do in JAVA.</p>
+<p>In Scala you can do everything that you already could do in JAVA, or in other Object oriented language.
+The main difference could be that in Scala there aren&#39;t static scope variables. But an equivalent thing:
+If you need a static variable for the class A, you create an object A in the same file, and place 
+the variable there. </p>
 <p><a name="objects-class"></a></p>
 <h3 id="objects-and-class">Objects and Class</h3>
 <p><strong>Class</strong>: is equivalent to Java. </p>
-<pre><code class="language-scala">// declaring
+<pre><code class="language-scala">// declaring a class you can create a default constructor. This constructor 
+// define the constructor arguments and class Attribute at same time. 
 class Example(favoriteNumber:Int, name:String) {
+    //  an attribute
     private val dadFavoriteNumber:Int = favoriteNumber * 2
+    // defining other constructor, on this case calling the default constructor
+    def this(favoriteNumber:Long) = this(favoriteNumber.toInt, &quot;default-name&quot;);
+    // defining a method without arguments with Int Return
     def dadNumber():Int = dadFavoriteNumber
+    // this is equivalent to
+    // def dadNumber():Int = {return dadFavoriteNumber; }
 }
-// instantiating
+// instantiating with firt constructor
 new Example(1, &quot;ruiOliveira&quot;).dadNumber()
+// instantiating with second constructor
+new Example(2l).dadNumber()
+// 2l -&gt; is a scala way to create Longs
 </code></pre>
+<p>Run scala intepretor in the shell (command &#39;scala&#39;), and copy-paste this code and test.</p>
 <p><strong>Object</strong>: is a tool that can be used in different situations.
-One used situation is to work has a singleton
-(in the nested class and object you will see that not all objects are singleton)</p>
-<pre><code class="language-scala">// a class
-class Example(favoriteNumber:Int, name:String) { ... }
+One used situation is to work has a singleton, as you can see:</p>
+<pre><code class="language-scala">// (Requires the Example class definition in the intepretor)
 
-// a singleton object
+// a singleton object 
 object Example{
+    // This variable can be seen has a static variable in Example 
     var counter:Int = 10
+    // this method can be seend has a Static method in the Example
     def counterPlusOne():Int ={ counter += 1; counter }  
-    def newExample(name:String) = new Example(counterPlusOne(), name);
+    // On this method we are creating a variable of class Example and using 
+    // the object Example. The compiler is very smart, and they know when 
+    // you are using the Class or when you are using the Object. Even if 
+    // they have the same name.
+    def newExample(name:String) = new Example(Example.counterPlusOne(), name);
 }
-Example.newExample(&quot;Rui Oliveira&quot;)
+val ro1 = Example.newExample(&quot;Rui Oliveira 1&quot;);
+ro1.dadNumber()
+val ro2 = Example.newExample(&quot;Rui Oliveira 2&quot;);
+ro2.dadNumber()
+val ro3 = Example.newExample(&quot;Rui Oliveira 3&quot;);
+ro3.dadNumber()
+// the dadNumber is growing,
 </code></pre>
+<p>Run scala intepretor in the shell (command &#39;scala&#39;), and copy-paste this code.</p>
 <p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
 <p><a name="traits"></a></p>
 <h3 id="traits">Traits</h3>
 <p>A trait is a <strong>tool</strong>, a tool that can be compared to a JAVA interface. With the different
 that you can have method implementations and variable initialization.</p>
-<p>After the compilation, as trait is nothing more that a interface for the JVM. They are just
-inlining the methods implementations and the variable declarions where ever the trait
-is used</p>
-<p><strong>Trait example</strong></p>
-<p>Who uses this trait must declare a value name, and will have the remaining stuff for free.</p>
+<p>After the compilation, as trait is nothing more that a interface for the JVM. 
+So the definitions of the method and variable will be the in the class that uses the trait.</p>
+<p><strong>Creating a Trait</strong></p>
 <pre><code class="language-scala">trait Person{
+    //who use this trait must define a value Name with type String
     val name:String;
     var nameCounter = 0
     def getName():String = {
@@ -95,31 +125,40 @@ is used</p>
 
     def howManyTimesNameWasCalled() = nameCounter
 }
+// you can create an object with the same name has the trait
+object Person{
+  // you can variables of a spessfic Trait
+  def testTraitPerson(p:Person) = {
+    println(p.howManyTimesNameWasCalled())
+    p.getName(); p.getName()
+    println(p.howManyTimesNameWasCalled())
+  }
 
-def testTraitPerson(p:Person):Int = p.howManyTimesNameWasCalled()
+}
 </code></pre>
 <p><strong>Object using a Trait</strong>, note that we are defining name value.</p>
 <pre><code class="language-scala">object RuiOliveira extends Person{
     val name = &quot;rui Oliveira&quot;;
 }
-
-testTraitPerson(RuiOliveira)
+Person.testTraitPerson(RuiOliveira)
 </code></pre>
 <p>Has you can see a object is a variable that uses Person so it can be used in the testTraitPerson</p>
-<p><strong>Class using a trait</strong>, note that we are declaring value name in the parameters now.</p>
+<p><strong>Class using a trait</strong>, note that we are declaring value &#39;name&#39; in the constructor parameters.</p>
 <pre><code class="language-scala">class OtherPerson(val name:String) extends Person
 
-val p = new OtherPerson(&#39;pedro&#39;)
-testTraitPerson(p)
+val p = new OtherPerson(&quot;pedro&quot;)
+Person.testTraitPerson(p)
 </code></pre>
 <p>Has was expected we can use traits in class&#39;s</p>
-<p><strong>Trait on variable</strong>. (Anonymous declaration) The class Dog don&#39;t use the trait Person, even so we can create a variable with that implementing what is needed. </p>
-<pre><code class="language-scala">class Dog(val dogName:String)
+<p><strong>Trait on variable</strong>. (Anonymous declaration) </p>
+<pre><code class="language-scala">// Dog are not Persons, so it don&#39;t extends to trait Person
+class Dog(val dogName:String)
 
-val p = new Dog(&quot;doggy&quot;) with Person {
+// but this specialDog are a Person, its type is &#39;Dog with Person&#39;
+val specialDog:Dog with Person = new Dog(&quot;doggy&quot;) with Person {
     val name = dogName;
 }
-testTraitPerson(p)
+Person.testTraitPerson(p)
 </code></pre>
 <p><a name="case-class"></a></p>
 <h3 id="case-class">Case Class</h3>
