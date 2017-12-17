@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="stylesheet" href="/css/lib/pure.css"><link rel="stylesheet" href="/css/lib/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><!--link(rel='stylesheet' href='/css/blog.css')--><link rel="stylesheet" href="/css/side-bar.css"><link rel="stylesheet" href="/css/base.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-lg-8-24">     <div class="ros-sidebar-content pure-u-20-24"><div class="brand-title pure-g"><div class="pure-u-2-5"><img src="/img/me.jpg" class="pure-img"></div><span class="pure-u-3-5"><a href="/" class="brand-title-text ros-super-cool-url">Rui <br> Oliveiras</a></span></div><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/posts" class="ros-cool-url">Posts</a></li><li class="nav-item"><a href="/p1/bio.html" class="ros-cool-url">Bio</a></li><li class="nav-item"><a href="/cv.pdf" class="ros-cool-url">Curriculum</a></li><li class="nav-item"><a href="https://github.com/ruioliveiras/" class="ros-cool-url">Github</a></li></ul></nav><h2 class="brand-tagline">Summary</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="#concepts" class="ros-cool-url">Concepts</a></li><ul class="nav-list"><li class="nav-item"><a href="#mutability-ummitability" class="ros-cool-url">Mutability and Immutability</a></li><li class="nav-item"><a href="#singleton" class="ros-cool-url">Singleton object</a></li></ul><li class="nav-item"><a href="#scala-oo" class="ros-cool-url">Scala as a Object Oriented Language</a></li><ul class="nav-list"><li class="nav-item"><a href="#objects-class" class="ros-cool-url">Objects and Class</a></li><li class="nav-item"><a href="#traits" class="ros-cool-url">Traits</a></li><li class="nav-item"><a href="#case-class" class="ros-cool-url">Case Class</a></li><li class="nav-item"><a href="#generic-class" class="ros-cool-url">Generic Class</a></li></ul><li class="nav-item"><a href="#scala-functional" class="ros-cool-url">Scala as a Functional language</a></li><ul class="nav-list"><li class="nav-item"><a href="#var-val" class="ros-cool-url">Var and Val</a></li><li class="nav-item"><a href="#higter-order" class="ros-cool-url">Higter order functions</a></li><li class="nav-item"><a href="#collections-functions" class="ros-cool-url">Collections functions</a></li><li class="nav-item"><a href="#-implicit-variable" class="ros-cool-url">Implicit Variable</a></li><li class="nav-item"><a href="#-implicit-method" class="ros-cool-url">Implicit Method</a></li><li class="nav-item"><a href="#-implicit-class" class="ros-cool-url">Implicit Class</a></li></ul><li class="nav-item"><a href="#scala-script" class="ros-cool-url">Scala as a Script language</a></li><ul class="nav-list"><li class="nav-item"><a href="#type-inference" class="ros-cool-url">Type Inference</a></li><li class="nav-item"><a href="#syntax-sugar" class="ros-cool-url">Syntax Sugar</a></li></ul><li class="nav-item"><a href="#scala-concurrency" class="ros-cool-url">Scala Concurrency</a></li><ul class="nav-list"><li class="nav-item"><a href="#futures-promises" class="ros-cool-url">Futures and Promises</a></li><li class="nav-item"><a href="#todo" class="ros-cool-url">todo: add topics here</a></li></ul><li class="nav-item"><a href="#scala-reflection" class="ros-cool-url">Scala Reflection</a></li><ul class="nav-list"><li class="nav-item"><a href="#universe" class="ros-cool-url">Universe</a></li><li class="nav-item"><a href="#todo2" class="ros-cool-url">Add something here</a></li></ul><li class="nav-item"><a href="#scala-macros" class="ros-cool-url">Scala Macros</a></li><ul class="nav-list"><li class="nav-item"><a href="#whitebox-blackbox" class="ros-cool-url">Whitebox and blackbox macros</a></li><li class="nav-item"><a href="#annotations-macros" class="ros-cool-url">Annotations Macros</a></li></ul><li class="nav-item"><a href="#scala-xml" class="ros-cool-url">Scala XML</a></li><li class="nav-item"><a href="#scala-string" class="ros-cool-url">Scala String Processing</a></li></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-lg-16-24"><h1>Scala Language base Tutorial</h1><h4>Hot links</h4><p>Scala Oficial: <a href="http://www.scala-lang.org">http://www.scala-lang.org</a></p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scala=1.0"><meta name="description" content="This is RuiOliveiras personal blog, where i will right about interesting things"><title>RuiOliveiras &ndash; Personal Blog</title><link rel="stylesheet" href="/js//lib/prism.css"><link rel="stylesheet" href="/css/lib/pure.css"><link rel="stylesheet" href="/css/lib/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Sura"><!--link(rel='stylesheet' href='/css/blog.css')--><link rel="stylesheet" href="/css/side-bar.css"><link rel="stylesheet" href="/css/base.css"></head><body><div id="layout" class="pure-g active"><div id="" class="ros-sidebar pure-u-1 pure-u-lg-8-24">     <div class="ros-sidebar-content pure-u-20-24"><div class="brand-title pure-g"><div class="pure-u-2-5"><img src="/img/me.jpg" class="pure-img"></div><span class="pure-u-3-5"><a href="/" class="brand-title-text ros-super-cool-url">Rui Oliveiras</a></span></div><h2 class="brand-tagline">Menu</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="/posts" class="ros-cool-url">Posts</a></li><li class="nav-item"><a href="/p1/bio.html" class="ros-cool-url">Bio</a></li><li class="nav-item"><a href="/cv.pdf" class="ros-cool-url">Curriculum</a></li><li class="nav-item"><a href="https://github.com/ruioliveiras/" class="ros-cool-url">Github</a></li></ul></nav><h2 class="brand-tagline">Summary</h2><nav class="nav"><ul class="nav-list"><li class="nav-item"><a href="#concepts" class="ros-cool-url">Concepts</a></li><ul class="nav-list"><li class="nav-item"><a href="#mutability-ummitability" class="ros-cool-url">Mutability and Immutability</a></li><li class="nav-item"><a href="#singleton" class="ros-cool-url">Singleton object</a></li></ul><li class="nav-item"><a href="#scala-oo" class="ros-cool-url">Scala as a Object Oriented Language</a></li><ul class="nav-list"><li class="nav-item"><a href="#objects-class" class="ros-cool-url">Objects and Class</a></li><li class="nav-item"><a href="#traits" class="ros-cool-url">Traits</a></li><li class="nav-item"><a href="#case-class" class="ros-cool-url">Case Class</a></li><li class="nav-item"><a href="#generic-class" class="ros-cool-url">Generic Class</a></li></ul><li class="nav-item"><a href="#scala-functional" class="ros-cool-url">Scala as a Functional language</a></li><ul class="nav-list"><li class="nav-item"><a href="#var-val" class="ros-cool-url">Var and Val</a></li><li class="nav-item"><a href="#higter-order" class="ros-cool-url">Higter order functions</a></li><li class="nav-item"><a href="#collections-functions" class="ros-cool-url">Collections functions</a></li><li class="nav-item"><a href="#-implicit-variable" class="ros-cool-url">Implicit Variable</a></li><li class="nav-item"><a href="#-implicit-method" class="ros-cool-url">Implicit Method</a></li><li class="nav-item"><a href="#-implicit-class" class="ros-cool-url">Implicit Class</a></li></ul><li class="nav-item"><a href="#scala-script" class="ros-cool-url">Scala as a Script language</a></li><ul class="nav-list"><li class="nav-item"><a href="#type-inference" class="ros-cool-url">Type Inference</a></li><li class="nav-item"><a href="#syntax-sugar" class="ros-cool-url">Syntax Sugar</a></li></ul></ul></nav></div><a href="#menu" id="menuLink" class="pure-u-4-24 menu-link"><span></span></a></div><div class="ros-content pure-u-1 pure-u-lg-16-24"><h1>Scala Language base Tutorial</h1><h4>Hot links</h4><p>Scala Oficial: <a href="http://www.scala-lang.org">http://www.scala-lang.org</a></p>
 <p>Nice post: <a href="http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html">http://lampwww.epfl.ch/~michelou/scala/using-scala-from-java.html</a></p>
 <p><strong>How Install</strong>: <a href="http://www.scala-lang.org/download/install.html">http://www.scala-lang.org/download/install.html</a> ;</p>
 <p>It is just:</p>
@@ -16,10 +16,10 @@ Is the scala build tool which manage dependencies. Sbt is for scala like Maven i
 <p>Next, I have separated the main features in 3 Charters:  <a href="#scala-oo">Scala as a Object Oriented Language</a>, <a href="#scala-functional">Scala as a Functional language</a>, <a href="#scala-script">Scala as a Script language</a>. 
 I like to say that scala was the qualities of all kind paradigms.
 It is possible to take advantage of each paradigm.</p>
-<p>I the end I picked up some other topic: Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; 
+<p>In the future I would like to pick some other topic: Reflection and Macros - this two things are still currently in experimental, but they are very cool and usable; 
 Concurrency  which in Scala is very intuitive; 
 Native XML scala feature;
-and some notes about string processing. </p>
+and notes about string processing. </p>
 <p>This tutorial is currently beeing writed in my free times, so in the end there are some topics which are not writed yet .</p>
 <h2>Scala Ecosystem</h2><p>Tools</p>
 <p><a name="concepts"></a></p>
@@ -95,7 +95,13 @@ ro3.dadNumber()
 // the dadNumber is growing,
 </code></pre>
 <p>Run scala intepretor in the shell (command &#39;scala&#39;), and copy-paste this code.</p>
-<p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class.</p>
+<p>In scala a class don&#39;t have static methods or variables, what you can do is create a Object with the same name of the class, this object is called <strong>Companion object</strong></p>
+<pre><code class="language-scala">// The class
+class TheClass
+// The companion object
+oject TheClass
+// PERSONAL NOTE: need intepretor validation
+</code></pre>
 <p><a name="traits"></a></p>
 <h3>Traits</h3><p>A trait is a <strong>tool</strong>, a tool that can be compared to a JAVA interface. With the different
 that you can have method implementations and variable initialization.</p>
@@ -165,6 +171,19 @@ case class Phone2( number:String, owner:Owner2)
 <li>class will be immutable by default</li>
 <li>default create singleton object with method unapplay and apply functions</li>
 </ul>
+<p><a name="apply-unapply"></a></p>
+<h3>Methods <code>apply</code> and <code>unapply</code></h3><p>The methods <code>apply</code> and <code>unapply</code> are created in the companion object</p>
+<pre><code class="language-scala">case class Person(name:String)
+
+object Person {
+  // methods create automaticly by case class:
+  // def apply(name:String) = new Person(name)
+  // def unapply()
+}
+
+
+// NEED intrepretor vadidation
+</code></pre>
 <p>!explain !
 !Here explain the power of unapplay and apply!</p>
 <p><a name="generic-class"></a></p>
@@ -314,39 +333,80 @@ TODO: write this topic.</p>
 <p><a name="syntax-sugar"></a></p>
 <h3>Syntax Sugar</h3><p>WARNING: Not writed yet
 TODO: write this topic.</p>
-<p><a name="scala-cool"></a></p>
-<h2>Scala as a cool language</h2><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="scala-concurrency"></a></p>
-<h3>Scala Concurrency</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="futures-promises"></a></p>
-<h4>Futures and Promises</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="todo"></a></p>
-<h4>@todo: add topics here</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="scala-reflection"></a></p>
-<h3>Scala Reflection</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="universe"></a></p>
-<h4>Universe</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="todo2"></a></p>
-<h4>Add something here</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="scala-macros"></a></p>
-<h3>Scala Macros</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="whitebox-blackbox"></a></p>
-<h4>Whitebox and blackbox macros</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="annotations-macros"></a></p>
-<h4>Annotations Macros</h4><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="scala-xml"></a></p>
-<h3>Scala XML</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p>
-<p><a name="scala-string"></a></p>
-<h3>Scala String Processing</h3><p>WARNING: Not writed yet
-TODO: write this topic.</p></put><!--div(class='footer')--><!--div(class='pure-menu pure-menu-horizontal')--><!--  ul--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas1--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas2--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas3--></div></div><script src="/js/lib/prism.js"></script><script src="/js/ui.js"></script></body></html>
+<!---
+
+# ,"#scala-concurrency":{"title":"Scala Concurrency","sub":{"#futures-promises":{"title":"Futures and Promises"},"#todo":{"title":"todo: add topics here"}}},"#scala-reflection":{"title":"Scala Reflection","sub":{"#universe":{"title":"Universe"},"#todo2":{"title":"Add something here"}}},"#scala-macros":{"title":"Scala Macros","sub":{"#whitebox-blackbox":{"title":"Whitebox and blackbox macros"},"#annotations-macros":{"title":"Annotations Macros"}}},"#scala-xml":{"title":"Scala XML"},"#scala-string":{"title":"Scala String Processing"}   }
+
+# <a name="scala-cool"></a>
+# ## Scala as a cool language
+#
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="scala-concurrency"></a>
+# ### Scala Concurrency
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="futures-promises"></a>
+# #### Futures and Promises
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="todo"></a>
+# #### @todo: add topics here
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="scala-reflection"></a>
+# ### Scala Reflection
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="universe"></a>
+# #### Universe
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="todo2"></a>
+# #### Add something here
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="scala-macros"></a>
+# ### Scala Macros
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="whitebox-blackbox"></a>
+# #### Whitebox and blackbox macros
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="annotations-macros"></a>
+# #### Annotations Macros
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="scala-xml"></a>
+# ### Scala XML
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+# <a name="scala-string"></a>
+# ### Scala String Processing
+# 
+# WARNING: Not writed yet
+# TODO: write this topic.
+# 
+--></put><!--div(class='footer')--><!--div(class='pure-menu pure-menu-horizontal')--><!--  ul--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas1--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas2--><!--    li(class='pure-menu-item'): a(href='/' class='pure-menu-link') cenas3--></div></div><script src="/js/lib/prism.js"></script><script src="/js/ui.js"></script></body></html>
